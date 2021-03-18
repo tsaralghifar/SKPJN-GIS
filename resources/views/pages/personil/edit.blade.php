@@ -90,7 +90,7 @@
 	});
 
     var map = L.map('map', {
-    center: [-3.207609123297818, 115.34027049906199],
+    center: [{{$personil->lokasi_personil}}],
     zoom: 9,
     layers: [peta1]
     });
@@ -106,11 +106,21 @@
 
     //   L.marker([-3.017003314867774, 115.07659871338554]).addTo(map);
     // get coordinat
-    var curLocation = ([-3.017003314867774, 115.07659871338554]);
+    var curLocation = [{{$personil->lokasi_personil}}];
     map.attributionControl.setPrefix(false);
+
+    var greenIcon = new L.Icon({
+    iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
+    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+    iconSize: [25, 41],
+    iconAnchor: [12, 41],
+    popupAnchor: [1, -34],
+    shadowSize: [41, 41]
+    });
 
     var marker = new L.marker(curLocation,{
         draggable : 'true',
+        icon : greenIcon
     });
     map.addLayer(marker);
     // get drag coordinat

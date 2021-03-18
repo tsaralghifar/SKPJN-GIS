@@ -108,8 +108,18 @@
     var curLocation = [-3.017003314867774, 115.07659871338554];
     map.attributionControl.setPrefix(false);
 
-    var marker = new L.marker(curLocation,{
+    var greenIcon = new L.Icon({
+    iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
+    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+    iconSize: [25, 41],
+    iconAnchor: [12, 41],
+    popupAnchor: [1, -34],
+    shadowSize: [41, 41]
+    });
+
+    var marker = new L.marker(curLocation, {
         draggable : 'true',
+        icon: greenIcon
     });
     map.addLayer(marker);
     // get drag coordinat
