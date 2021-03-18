@@ -56,7 +56,7 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-image"></i></div>
                                 Personil
                             </a>
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="{{route('peralatan')}}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-image"></i></div>
                                 Pemakaian Peralatan
                             </a>
