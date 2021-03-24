@@ -82,8 +82,8 @@
                             </a>
                             <div class="collapse" id="collapseLayouts2" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="">Anggaran Masuk</a>
-                                    <a class="nav-link" href="">Anggaran Keluar</a>
+                                    <a class="nav-link" href="{{route('masuk')}}">Anggaran Masuk</a>
+                                    <a class="nav-link" href="{{route('keluar')}}">Anggaran Keluar</a>
                                 </nav>
                             </div>
                             <a class="nav-link" href="#">
