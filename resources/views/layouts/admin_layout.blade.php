@@ -38,7 +38,14 @@
                         <a class="dropdown-item" href="#">Settings</a>
                         <a class="dropdown-item" href="#">Activity Log</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="login.html">Logout</a>
+                        <a class="dropdown-item" href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();">
+                            {{ __('Logout') }}
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
                     </div>
                 </li>
             </ul>
@@ -64,21 +71,21 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-home"></i></div>
                                 Peralatan & Bahan Konstruksi
                             </a>
+                            <a class="nav-link" href="{{route('penghambat')}}">
+                                <div class="sb-nav-link-icon"><i class="fas fa-home"></i></div>
+                                Penghambat Konstruksi
+                            </a>
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts2" aria-expanded="false" aria-controls="collapseLayouts">
                                 <div class="sb-nav-link-icon"><i class="fas fa-image"></i></div>
-                                Penghambat Konstruksi
+                                Anggaran
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
                             <div class="collapse" id="collapseLayouts2" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="">Create</a>
-                                    <a class="nav-link" href="">List</a>
+                                    <a class="nav-link" href="">Anggaran Masuk</a>
+                                    <a class="nav-link" href="">Anggaran Keluar</a>
                                 </nav>
                             </div>
-                            <a class="nav-link" href="#">
-                                <div class="sb-nav-link-icon"><i class="fas fa-image"></i></div>
-                                Biaya Anggaran
-                            </a>
                             <a class="nav-link" href="#">
                                 <div class="sb-nav-link-icon"><i class="fas fa-envelope"></i></div>
                                 Pengeluaran Biaya Personil

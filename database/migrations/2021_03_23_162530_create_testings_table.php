@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePenghambatTable extends Migration
+class CreateTestingsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class CreatePenghambatTable extends Migration
      */
     public function up()
     {
-        Schema::create('penghambats', function (Blueprint $table) {
+        Schema::create('testings', function (Blueprint $table) {
             $table->id();
-            $table->string('jenis_kejadian');
+            $table->string('nama');
             $table->string('slug');
-            $table->string('akibat');
-            $table->timestamp('jam', $precision = 0);
-            $table->string('penanggung_jawab');
+            $table->string('alamat');
+            $table->string('tempat_lahir');
             $table->timestamps();
         });
     }
@@ -31,6 +30,6 @@ class CreatePenghambatTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('penghambat');
+        Schema::dropIfExists('testings');
     }
 }

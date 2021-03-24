@@ -13,13 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 // Personil
 Route::get('/personil', [App\Http\Controllers\PersonilController::class, 'index'])->name('personil');
 Route::get('/personil/create', [App\Http\Controllers\PersonilController::class, 'create'])->name('personil.create');
@@ -41,3 +42,24 @@ Route::post('/peralatan/store', [App\Http\Controllers\PeralatanController::class
 Route::get('/peralatan/edit/{id}', [App\Http\Controllers\PeralatanController::class, 'edit'])->name('peralatan.edit');
 Route::put('/peralatan/update/{id}', [App\Http\Controllers\PeralatanController::class, 'update'])->name('peralatan.update');
 Route::delete('/peralatan/destroy/{id}', [App\Http\Controllers\PeralatanController::class, 'destroy'])->name('peralatan.destroy');
+// Penghambat
+Route::get('/penghambat', [App\Http\Controllers\PenghambatController::class, 'index'])->name('penghambat');
+Route::get('/penghambat/create', [App\Http\Controllers\PenghambatController::class, 'create'])->name('penghambat.create');
+Route::post('/penghambat/store', [App\Http\Controllers\PenghambatController::class, 'store'])->name('penghambat.store');
+Route::get('/penghambat/edit/{id}', [App\Http\Controllers\PenghambatController::class, 'edit'])->name('penghambat.edit');
+Route::put('/penghambat/update/{id}', [App\Http\Controllers\PenghambatController::class, 'update'])->name('penghambat.update');
+Route::delete('/penghambat/destroy/{id}', [App\Http\Controllers\PenghambatController::class, 'destroy'])->name('penghambat.destroy');
+// Anggaran Masuk
+Route::get('/masuk', [App\Http\Controllers\PenghambatController::class, 'index'])->name('masuk');
+Route::get('/masuk/create', [App\Http\Controllers\PenghambatController::class, 'create'])->name('masuk.create');
+Route::post('/masuk/store', [App\Http\Controllers\PenghambatController::class, 'store'])->name('masuk.store');
+Route::get('/masuk/edit/{id}', [App\Http\Controllers\PenghambatController::class, 'edit'])->name('masuk.edit');
+Route::put('/masuk/update/{id}', [App\Http\Controllers\PenghambatController::class, 'update'])->name('masuk.update');
+Route::delete('/masuk/destroy/{id}', [App\Http\Controllers\PenghambatController::class, 'destroy'])->name('masuk.destroy');
+// Anggaran Keluar
+Route::get('/keluar', [App\Http\Controllers\PenghambatController::class, 'index'])->name('keluar');
+Route::get('/keluar/create', [App\Http\Controllers\PenghambatController::class, 'create'])->name('keluar.create');
+Route::post('/keluar/store', [App\Http\Controllers\PenghambatController::class, 'store'])->name('keluar.store');
+Route::get('/keluar/edit/{id}', [App\Http\Controllers\PenghambatController::class, 'edit'])->name('keluar.edit');
+Route::put('/keluar/update/{id}', [App\Http\Controllers\PenghambatController::class, 'update'])->name('keluar.update');
+Route::delete('/keluar/destroy/{id}', [App\Http\Controllers\PenghambatController::class, 'destroy'])->name('keluar.destroy');
