@@ -43,7 +43,7 @@ class JadwalPengerjaanController extends Controller
         $data = $request->all();
 
         jadwal::create($data);
-        return redirect()->route('');
+        return redirect()->route('jadwal');
     }
 
     /**
@@ -85,7 +85,7 @@ class JadwalPengerjaanController extends Controller
         $jadwal = Jadwal::findOrFail($id);
         $jadwal->update($data);
 
-        return redirect()->route('');
+        return redirect()->route('jadwal');
     }
 
     /**
@@ -99,6 +99,6 @@ class JadwalPengerjaanController extends Controller
         $jadwal = Jadwal::findOrFail($id);
         $jadwal->delete();
 
-        return redirect()->route('');
+        return redirect()->route('jadwal');
     }
 }

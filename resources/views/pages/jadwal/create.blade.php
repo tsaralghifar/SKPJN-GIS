@@ -9,7 +9,7 @@
                     Form
                 </div>
                 <div class="card-body">
-                    <form action="{{route('bahan.store')}}" method="POST">
+                    <form action="{{route('jadwal.store')}}" method="POST">
                         @csrf
                         {{-- @if ($idEdit)
                             wire:submit.prevent="updateLocation"
@@ -18,28 +18,28 @@
                         @endif --}}
                     
                         <div class="form-group">
-                            <label>Material</label>
+                            <label>Nama Proyek</label>
                             <input type="text"
-                                   name="material"
-                                   value="{{ old('material') }}"
-                                   class="form-control @error('material') is-invalid @enderror"/>
-                                   @error('material') <div class="text-muted">{{ $message }}</div> @enderror
+                                   name="proyek_name"
+                                   value="{{ old('proyek_name') }}"
+                                   class="form-control @error('proyek_name') is-invalid @enderror"/>
+                                   @error('proyek_name') <div class="text-muted">{{ $message }}</div> @enderror
                         </div>
                         <div class="form-group">
-                            <label>Satuan</label>
-                            <input type="text"
-                                   name="satuan"
-                                   value="{{ old('satuan') }}"
-                                   class="form-control @error('satuan') is-invalid @enderror"/>
-                                   @error('satuan') <div class="text-muted">{{ $message }}</div> @enderror
+                            <label>Jadwal Pengerjaan</label>
+                            <input type="date"
+                                   name="jadwal_pengerjaan"
+                                   value="{{ old('jadwal_pengerjaan') }}"
+                                   class="form-control @error('jadwal_pengerjaan') is-invalid @enderror"/>
+                                   @error('jadwal_pengerjaan') <div class="text-muted">{{ $message }}</div> @enderror
                         </div>
                         <div class="form-group">
-                            <label>Volume</label>
-                            <input type="text"
-                                   name="volume"
-                                   value="{{ old('volume') }}"
-                                   class="form-control @error('volume') is-invalid @enderror"/>
-                                   @error('volume') <div class="text-muted">{{ $message }}</div> @enderror
+                            <label>Jadwal Estimasi</label>
+                            <input type="date"
+                                   name="jadwal_estimasi"
+                                   value="{{ old('jadwal_estimasi') }}"
+                                   class="form-control @error('jadwal_estimasi') is-invalid @enderror"/>
+                                   @error('jadwal_estimasi') <div class="text-muted">{{ $message }}</div> @enderror
                         </div>
                         <div class="form-group">
                             <button type="submit" class="btn btn-dark text-white btn-block">Save</button>

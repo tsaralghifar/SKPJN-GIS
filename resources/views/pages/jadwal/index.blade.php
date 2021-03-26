@@ -26,7 +26,7 @@
           <h3 class="card-title">List</h3>
 
           <div class="text-right">
-            <a class="btn btn-primary btn-sm" title="Create" href="">
+            <a class="btn btn-primary btn-sm" title="Create" href="{{ route('jadwal.create')}}">
               Create
             </a>     
           </div>
@@ -57,16 +57,16 @@
                 <td>{{$data->jadwal_pengerjaan}}</td>
                 <td>{{$data->jadwal_estimasi}}</td>
                 <td class="text-center">
-                  {{-- <a href="{{ route('bahan.edit', $data->id) }}" class="btn btn-primary btn-sm">
+                  <a href="{{ route('jadwal.edit', $data->id) }}" class="btn btn-primary btn-sm">
                     <i class="fa fa-edit"></i>
                   </a>
-                  <form action="{{ route('bahan.destroy', $data->id) }}" method="post" class="d-inline">
+                  <form action="{{ route('jadwal.destroy', $data->id) }}" method="post" class="d-inline">
                     @csrf
                     @method('delete')
                     <button class="btn btn-danger btn-sm">
                       <i class="fa fa-trash"></i>
                     </button>
-                  </form> --}}
+                  </form>
                 </td>
               </tr>
               @endforeach

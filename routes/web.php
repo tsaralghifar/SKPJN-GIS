@@ -71,4 +71,11 @@ Route::middleware(['auth'])->group( function() {
   Route::get('/site-proyek/{id}', [\App\Http\Controllers\SiteProyekController::class, 'edit'])->name('site.edit');
   Route::put('/site-proyek/{id}', [\App\Http\Controllers\SiteProyekController::class, 'update'])->name('site.update');
   Route::delete('/site-proyek/{id}', [\App\Http\Controllers\SiteProyekController::class, 'destroy'])->name('site.destroy');
+  // Jadwal Pengerjaan
+  Route::get('/jadwal', [\App\Http\Controllers\JadwalPengerjaanController::class, 'index'])->name('jadwal');
+  Route::get('/jadwal/create', [\App\Http\Controllers\JadwalPengerjaanController::class, 'create'])->name('jadwal.create');
+  Route::post('/jadwal/store', [\App\Http\Controllers\JadwalPengerjaanController::class, 'store'])->name('jadwal.store');
+  Route::get('/jadwal/{id}', [\App\Http\Controllers\JadwalPengerjaanController::class, 'edit'])->name('jadwal.edit');
+  Route::put('/jadwal/{id}', [\App\Http\Controllers\JadwalPengerjaanController::class, 'update'])->name('jadwal.update');
+  Route::delete('/jadwal/{id}', [\App\Http\Controllers\JadwalPengerjaanController::class, 'destroy'])->name('jadwal.destroy');
 });
