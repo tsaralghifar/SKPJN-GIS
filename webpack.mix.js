@@ -12,5 +12,12 @@ const mix = require('laravel-mix');
  */
 
 mix.js('resources/js/app.js', 'public/js')
-    .sass('resources/sass/app.scss', 'public/css')
+    .styles([
+        'node_modules/admin-lte/dist/css/adminlte.min.css',
+    ], 'public/css/app.css')
+    .scripts([
+        'node_modules/admin-lte/plugins/jquery/jquery.min.js',
+        'node_modules/admin-lte/plugins/bootstrap/js/bootstrap.bundle.min.js',
+        'node_modules/admin-lte/dist/js/adminlte.js',
+    ], 'public/js/template.js')
     .sourceMaps();
