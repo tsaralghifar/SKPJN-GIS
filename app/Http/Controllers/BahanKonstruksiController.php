@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-use App\Models\BahanKonstruksi;
+use App\Models\Bahankonstruksi;
 use App\Http\Requests\BahanKonstruksiRequest;
 
 class BahanKonstruksiController extends Controller
