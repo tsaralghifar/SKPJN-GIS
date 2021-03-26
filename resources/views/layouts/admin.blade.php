@@ -46,9 +46,12 @@ to get the desired effect
       <!-- Right navbar links -->
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#">
+          <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
             <i class="fas fa-sign-out-alt"></i>
           </a>
+          <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+            @csrf
+          </form>
         </li>
       </ul>
     </nav>
@@ -79,6 +82,14 @@ to get the desired effect
                 <i class="nav-icon fas fa-tachometer-alt"></i>
                 <p>
                   Dashboard
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ route('site') }}" class="nav-link">
+                <i class="nav-icon fas fa-map"></i>
+                <p>
+                  Site Proyek
                 </p>
               </a>
             </li>
