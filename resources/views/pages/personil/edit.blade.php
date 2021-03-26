@@ -1,66 +1,91 @@
-@extends('layouts.admin_layout')
+@extends('layouts.admin')
 @section('content')
-<div class="container-fluid">
-    <div class="row bg-white">
-        <div class="col-md-8 mt-4">
-            <div class="card">
-                <div class="card-header bg-secondary text-white">
-                    GIS MAP
-                </div>
-                <div class="card-body">
-                    <div id="map" style="width: 100%; height: 75vh;"></div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4 mt-4">
-            <div class="card">
-                <div class="card-header bg-secondary text-white">
-                    Form
-                </div>
-                <div class="card-body">
-                    <form action="{{route('personil.update', $personil->id)}}" method="POST">
-                        @method('PUT')
-                        @csrf
-                        {{-- @if ($idEdit)
-                            wire:submit.prevent="updateLocation"
-                        @else
-                            wire:submit.prevent="saveLocation"
-                        @endif --}}
-                    
-                        <div class="form-group">
-                            <label>Lokasi</label>
-                            <input type="text"
-                                   id="lokasi_personil"
-                                   name="lokasi_personil"
-                                   value="{{ old('lokasi_personil') ? old('lokasi_personil') : $personil->lokasi_personil }}"
-                                   class="form-control @error('lokasi_personil') is-invalid @enderror"/>
-                                   @error('lokasi_personil') <div class="text-muted">{{ $message }}</div> @enderror
-                        </div>
-                        <div class="form-group">
-                            <label>Personil</label>
-                            <input type="text"
-                                   name="personel"
-                                   value="{{ old('personel') ? old('personel') : $personil->personel }}"
-                                   class="form-control @error('personel') is-invalid @enderror"/>
-                                   @error('personel') <div class="text-muted">{{ $message }}</div> @enderror
-                        </div>
-                        <div class="form-group">
-                            <label>Jumlah</label>
-                            <input type="text"
-                                   name="jumlah"
-                                   value="{{ old('jumlah') ? old('jumlah') : $personil->jumlah }}"
-                                   class="form-control @error('jumlah') is-invalid @enderror"/>
-                                   @error('jumlah') <div class="text-muted">{{ $message }}</div> @enderror
-                        </div>
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-dark text-white btn-block">Save</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
+<div class="content-header">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-6">
+				<h1 class="m-0 text-dark">Personel</h1>
+			</div><!-- /.col -->
+			<div class="col-sm-6">
+				<ol class="breadcrumb float-sm-right">
+					<li class="breadcrumb-item"><a href="#">Personel</a></li>
+					<li class="breadcrumb-item active">Edit</li>
+				</ol>
+			</div><!-- /.col -->
+		</div><!-- /.row -->
+	</div><!-- /.container-fluid -->
 </div>
+<!-- /.content-header -->
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-8">
+			<div class="card">
+				<div class="card-header bg-secondary text-white">
+					GIS MAP
+				</div>
+				<div class="card-body">
+					<div id="map" style="width: 100%; height: 75vh;"></div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="card">
+				<div class="card-header bg-secondary text-white">
+					Form
+				</div>
+				<div class="card-body">
+					<form action="{{ route('personil.update', $personil->id) }}" method="POST">
+						@csrf
+						@method('PUT')
+						{{-- @if ($idEdit)
+								wire:submit.prevent="updateLocation"
+						@else
+								wire:submit.prevent="saveLocation"
+						@endif --}}
+						<div class="form-group">
+							<label>Lokasi</label>
+							<input type="text"
+								id="lokasi_personil"
+								name="lokasi_personil"
+								value="{{ old('lokasi_personil') ? old('lokasi_personil') : $personil->lokasi_personil }}"
+								class="form-control @error('lokasi_personil') is-invalid @enderror" readonly />
+							@error('lokasi_personil') 
+								<div class="text-danger">{{ $message }}</div> 
+							@enderror
+						</div>
+						<div class="form-group">
+							<label>Personil</label>
+							<input type="text"
+								name="personel"
+								value="{{ old('personel') ? old('personel') : $personil->personel }}"
+								class="form-control @error('personel') is-invalid @enderror" />
+							@error('personel') 
+								<div class="text-danger">{{ $message }}</div> 
+							@enderror
+						</div>
+						<div class="form-group">
+							<label>Jumlah</label>
+							<input type="text"
+								name="jumlah"
+								value="{{ old('jumlah') ? old('jumlah') : $personil->jumlah }}"
+								class="form-control @error('jumlah') is-invalid @enderror" />
+							@error('jumlah') 
+								<div class="text-danger">{{ $message }}</div> 
+							@enderror
+						</div>
+						<div class="form-group">
+							<button type="submit" class="btn btn-dark text-white btn-block">Save</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+@endsection
+
+@section('javascript-section')
 <script>
 
     var peta1 = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
