@@ -5,11 +5,11 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-sm-6">
-				<h1 class="m-0 text-dark">Pemakaian Peralatan</h1>
+				<h1 class="m-0 text-dark">Anggaran Masuk</h1>
 			</div><!-- /.col -->
 			<div class="col-sm-6">
 				<ol class="breadcrumb float-sm-right">
-					<li class="breadcrumb-item"><a href="#">Pemakaian Peralatan</a></li>
+					<li class="breadcrumb-item"><a href="#">Anggaran Masuk</a></li>
 					<li class="breadcrumb-item active">List</li>
 				</ol>
 			</div><!-- /.col -->
@@ -23,7 +23,7 @@
     <div class="col-12">
       <div class="card">
         <div class="card-header">
-          <h3 class="card-title">List</h3>
+          <h3 class="card-title">Anggaran Masuk</h3>
 
           <div class="text-right">
             <a class="btn btn-primary btn-sm" title="Create" href="{{ route('masuk.create') }}">
