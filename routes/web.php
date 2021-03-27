@@ -78,4 +78,11 @@ Route::middleware(['auth'])->group( function() {
   Route::get('/jadwal/{id}', [\App\Http\Controllers\JadwalPengerjaanController::class, 'edit'])->name('jadwal.edit');
   Route::put('/jadwal/{id}', [\App\Http\Controllers\JadwalPengerjaanController::class, 'update'])->name('jadwal.update');
   Route::delete('/jadwal/{id}', [\App\Http\Controllers\JadwalPengerjaanController::class, 'destroy'])->name('jadwal.destroy');
+  // Form Pekerjaan
+  Route::get('/pekerjaan', [\App\Http\Controllers\PekerjaanController::class, 'index'])->name('pekerjaan');
+  Route::get('/pekerjaan/create', [\App\Http\Controllers\PekerjaanController::class, 'create'])->name('pekerjaan.create');
+  Route::post('/pekerjaan/store', [\App\Http\Controllers\PekerjaanController::class, 'store'])->name('pekerjaan.store');
+  Route::get('/pekerjaan/{id}', [\App\Http\Controllers\PekerjaanController::class, 'edit'])->name('pekerjaan.edit');
+  Route::put('/pekerjaan/{id}', [\App\Http\Controllers\PekerjaanController::class, 'update'])->name('pekerjaan.update');
+  Route::delete('/pekerjaan/{id}', [\App\Http\Controllers\PekerjaanController::class, 'destroy'])->name('pekerjaan.destroy');
 });

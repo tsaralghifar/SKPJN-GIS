@@ -15,7 +15,7 @@ class CreateAnggarankeluarsTable extends Migration
     {
         Schema::create('anggarankeluars', function (Blueprint $table) {
             $table->id();
-            $table->string('jumlah_keluar');
+            $table->integer('jumlah_keluar');
             $table->string('slug');
             $table->timestamp('waktu', $precision = 0);
             $table->string('penanggung_jawab');

@@ -119,6 +119,14 @@ to get the desired effect
               </a>
             </li>
             <li class="nav-item">
+              <a href="{{ route('pekerjaan') }}" class="nav-link">
+                <i class="nav-icon fas fa-user"></i>
+                <p>
+                  Form Pekerjaan
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
               <a href="{{ route('penghambat') }}" class="nav-link">
                 <i class="nav-icon fas fa-home"></i>
                 <p>
