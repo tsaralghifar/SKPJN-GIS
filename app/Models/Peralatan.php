@@ -10,6 +10,14 @@ class Peralatan extends Model
     use HasFactory;
 
     protected $fillable = [
-        'alat','slug','jumlah','lokasi_peralatan'
+        'alat',
+        'slug',
+        'jumlah',
+        'id_site'
     ];
+
+    public function lokasi()
+    {
+        return $this->belongsTo(SiteProyek::class, 'id_site', 'id');
+    }
 }

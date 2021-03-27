@@ -26,7 +26,7 @@ class PeralatanRequest extends FormRequest
         return [
             'alat' => 'required|max:225',
             'jumlah' => 'required|max:225',
-            'lokasi_peralatan' => 'required|max:225'
+            'id_site' => 'required|max:225|integer'
         ];
     }
 }

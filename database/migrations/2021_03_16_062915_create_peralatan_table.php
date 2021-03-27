@@ -18,8 +18,10 @@ class CreatePeralatanTable extends Migration
             $table->string('alat');
             $table->string('slug');
             $table->string('jumlah');
-            $table->string('lokasi_peralatan');
+            $table->unsignedBigInteger('id_site')->nullable();
             $table->timestamps();
+
+            $table->foreign('id_site')->references('id')->on('site_proyek')->onDelete('set null');
         });
     }
 
