@@ -27,14 +27,18 @@
                         @endif --}}
                     
                         <div class="form-group">
-                            <label>Lokasi Peralatan</label>
-                            <input type="text"
-                                   id="lokasi_peralatan"
-                                   name="lokasi_peralatan"
-                                   value="{{ old('lokasi_peralatan') }}"
-                                   class="form-control @error('lokasi_peralatan') is-invalid @enderror" readonly/>
-                                   @error('lokasi_peralatan') <div class="text-muted">{{ $message }}</div> @enderror
-                        </div>
+							<label>Lokasi</label>
+							<select name="id_site" id="id_site" class="form-control @error('id_site') is-invalid @enderror">
+								<option value=""> ** Daftar Proyek ** </option>
+							@foreach($site as $lokasi)
+								<option value="{{ $lokasi->id }}">{{ $lokasi->nama_proyek }} | {{ $lokasi->koordinat }}</option>
+							@endforeach
+							</select>
+							@error('id_site') 
+								<div class="text-danger">{{ $message }}</div> 
+							@enderror
+						</div>
+						<input type="hidden" name="site" value="" id="site">
                         <div class="form-group">
                             <label>Alat</label>
                             <input type="text"
@@ -63,7 +67,16 @@
 @endsection
 
 @section('javascript-section')
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ttskch/select2-bootstrap4-theme@x.x.x/dist/select2-bootstrap4.min.css">
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script>
+    $(document).ready(function() {
+        $('#id_site').select2({
+            theme: 'bootstrap4',
+            width: '100%'
+        });
+	});
     var peta1 = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
 		attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
 			'<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
@@ -91,9 +104,9 @@
 	});
 
     var map = L.map('map', {
-    center: [-3.207609123297818, 115.34027049906199],
-    zoom: 9,
-    layers: [peta1]
+        center: [-3.207609123297818, 115.34027049906199],
+        zoom: 9,
+        layers: [peta1]
     });
 
     var baseMaps = {
@@ -110,33 +123,39 @@
     var curLocation = [-3.017003314867774, 115.07659871338554];
     map.attributionControl.setPrefix(false);
 
-    var marker = new L.marker(curLocation, {
-        draggable : 'true',
-    });
-    map.addLayer(marker);
-    // get drag coordinat
-    marker.on('dragend',function(event){
-        var position = marker.getLatLng();
-        marker.setLatLng(position, {
-            draggable : 'true',
-        }).bindPopup(position).update();
-        $("#lokasi_peralatan").val(position.lat + "," + position.lng).keyup();
-    })
-    // get coordinat onclick
-    var posisi = document.querySelector("[name=lokasi_peralatan]");
-    map.on("click",function(event){
-        var lat = event.latlng.lat;
-        var lng = event.latlng.lng;
+    $("#id_site").on('change', function() {
 
-        if (!marker)
-        {
-            marker = L.marker(event.latlng).addTo(map);
-        }else{
-            marker.setLatLng(event.latlng);
+        var siteId = $('#id_site option:selected').text();
+
+        let getId = siteId.split(' | ');
+
+        $('#site').val(getId[1]);
+
+        $(".leaflet-marker-icon").remove();
+        $(".leaflet-popup").remove();
+
+        var defLocation = [-3.207609123297818, 115.34027049906199];
+        var curLocation;
+
+        var coordinate = $("#site").val();
+        var stringCoordinate = coordinate.split(',');
+
+        if (coordinate) { 
+            curLocation = [stringCoordinate[0], stringCoordinate[1]];
+        } else {
+            curLocation = defLocation;
         }
 
-        posisi.value = lat + "," + lng;
-    });
+        var icon = new L.Icon.Default();
+        icon.options.shadowSize = [0,0];
+
+        var marker = new L.marker(curLocation, {
+            draggable : false,
+            icon: icon
+        });
+
+        if (curLocation !== defLocation) map.addLayer(marker);
+    });  
     
 </script>
 @endsection

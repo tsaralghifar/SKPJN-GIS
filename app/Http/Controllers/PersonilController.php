@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Models\Personil;
+use App\Models\SiteProyek;
 use App\Http\Requests\PersonilRequest;
 
 class PersonilController extends Controller
@@ -29,7 +30,9 @@ class PersonilController extends Controller
      */
     public function create()
     {
-        return view('pages.personil.create');
+        $site = SiteProyek::all();
+
+        return view('pages.personil.create', compact('site'));
     }
 
     /**
@@ -40,7 +43,7 @@ class PersonilController extends Controller
      */
     public function store(PersonilRequest $request)
     {
-        $data = $request->all();
+        $data = $request->validated();
         $data['slug'] = Str::slug($request->personel);
 
         Personil::create($data);
@@ -68,9 +71,8 @@ class PersonilController extends Controller
     public function edit($id)
     {
         $personil =  Personil::findOrFail($id);
-        return view('pages.personil.edit')->with([
-            'personil' => $personil
-        ]);
+        $site = SiteProyek::all();
+        return view('pages.personil.edit', compact('personil', 'site'));
     }
 
     /**
@@ -82,7 +84,7 @@ class PersonilController extends Controller
      */
     public function update(PersonilRequest $request, $id)
     {
-        $data = $request->all();
+        $data = $request->validated();
         $data['slug'] = Str::slug($request->personel);
 
         $personil = Personil::findOrFail($id);

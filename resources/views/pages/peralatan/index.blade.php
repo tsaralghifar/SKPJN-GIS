@@ -52,9 +52,9 @@
               @foreach ($peralatan as $data)
               <tr>
                 <td>{{ $loop->iteration }}</td>
-                <td>{{$data->alat}}</td>
-                <td>{{$data->jumlah}}</td>
-                <td>{{$data->lokasi_peralatan}}</td>
+                <td>{{ $data->alat }}</td>
+                <td>{{ $data->jumlah }}</td>
+                <td>{{ $data->lokasi->koordinat }}</td>
                 <td class="text-center">
                   <a href="{{ route('peralatan.edit', $data->id) }}" class="btn btn-primary btn-sm">
                     <i class="fa fa-edit"></i>

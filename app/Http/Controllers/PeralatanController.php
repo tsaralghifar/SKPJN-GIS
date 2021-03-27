@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Models\Peralatan;
 use App\Http\Requests\PeralatanRequest;
+use App\Models\SiteProyek;
 
 class PeralatanController extends Controller
 {
@@ -29,7 +30,8 @@ class PeralatanController extends Controller
      */
     public function create()
     {
-        return view('pages.peralatan.create');
+        $site = SiteProyek::all();
+        return view('pages.peralatan.create', compact('site'));
     }
 
     /**
@@ -40,7 +42,7 @@ class PeralatanController extends Controller
      */
     public function store(PeralatanRequest $request)
     {
-        $data = $request->all();
+        $data = $request->validated();
         $data['slug'] = Str::slug($request->alat);
 
         Peralatan::create($data);
@@ -66,10 +68,10 @@ class PeralatanController extends Controller
      */
     public function edit($id)
     {
+        $site = SiteProyek::all();
         $peralatan =  Peralatan::findOrFail($id);
-        return view('pages.peralatan.edit')->with([
-            'peralatan' => $peralatan
-        ]);
+        
+        return view('pages.peralatan.edit', compact('peralatan', 'site'));
     }
 
     /**

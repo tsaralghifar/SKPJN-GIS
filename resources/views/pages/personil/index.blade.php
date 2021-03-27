@@ -54,7 +54,7 @@
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $data->personel }}</td>
                 <td>{{ $data->jumlah }}</td>
-                <td>{{ $data->lokasi_personil }}</td>
+                <td>{{ $data->lokasi->koordinat }}</td>
                 <td class="text-center">
                   <a href="{{ route('personil.edit', $data->id) }}" class="btn btn-primary btn-sm">
                     <i class="fa fa-edit"></i>
