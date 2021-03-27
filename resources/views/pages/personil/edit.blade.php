@@ -45,15 +45,17 @@
 						@endif --}}
 						<div class="form-group">
 							<label>Lokasi</label>
-							<input type="text"
-								id="lokasi_personil"
-								name="lokasi_personil"
-								value="{{ old('lokasi_personil') ? old('lokasi_personil') : $personil->lokasi_personil }}"
-								class="form-control @error('lokasi_personil') is-invalid @enderror" readonly />
-							@error('lokasi_personil') 
+							<select name="id_site" id="id_site" class="form-control @error('id_site') is-invalid @enderror">
+								<option value=""> ** Daftar Proyek ** </option>
+							@foreach($site as $lokasi)
+								<option value="{{ $lokasi->id }}" @if($personil->id_site == $lokasi->id) selected @endif>{{ $lokasi->nama_proyek }} | {{ $lokasi->koordinat }}</option>
+							@endforeach
+							</select>
+							@error('id_site') 
 								<div class="text-danger">{{ $message }}</div> 
 							@enderror
 						</div>
+						<input type="hidden" name="site" id="site" value="{{ $personil->lokasi->koordinat }}">
 						<div class="form-group">
 							<label>Personil</label>
 							<input type="text"
@@ -86,7 +88,16 @@
 @endsection
 
 @section('javascript-section')
-<script>
+	<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ttskch/select2-bootstrap4-theme@x.x.x/dist/select2-bootstrap4.min.css">
+	<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			$('#id_site').select2({
+				theme: 'bootstrap4',
+				width: '100%'
+			});
+		});
 
     var peta1 = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
 		attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
@@ -115,7 +126,7 @@
 	});
 
     var map = L.map('map', {
-    center: [{{$personil->lokasi_personil}}],
+    center: [{{ $personil->lokasi->koordinat }}],
     zoom: 9,
     layers: [peta1]
     });
@@ -131,16 +142,14 @@
 
     //   L.marker([-3.017003314867774, 115.07659871338554]).addTo(map);
     // get coordinat
-    var curLocation = [{{$personil->lokasi_personil}}];
+    var curLocation = [{{ $personil->lokasi->koordinat }}];
     map.attributionControl.setPrefix(false);
 
     var greenIcon = new L.Icon({
     iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
-    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
     iconSize: [25, 41],
     iconAnchor: [12, 41],
     popupAnchor: [1, -34],
-    shadowSize: [41, 41]
     });
 
     var marker = new L.marker(curLocation,{
@@ -148,29 +157,53 @@
         icon : greenIcon
     });
     map.addLayer(marker);
-    // get drag coordinat
-    marker.on('dragend',function(event){
-        var position = marker.getLatLng();
-        marker.setLatLng(position, {
-            draggable : 'true',
-        }).bindPopup(position).update();
-        $("#lokasi_personil").val(position.lat + "," + position.lng).keyup();
-    })
+
+		$("#id_site").on('change', function() {
+
+			var siteId = $('#id_site option:selected').text();
+
+			let getId = siteId.split(' | ');
+
+			$('#site').val(getId[1]);
+			
+			$(".leaflet-marker-icon").remove();
+			$(".leaflet-popup").remove();
+
+			var defLocation = [-3.207609123297818, 115.34027049906199];
+			var curLocation;
+
+			var coordinate = $("#site").val();
+			var stringCoordinate = coordinate.split(',');
+
+			if (coordinate) { 
+				curLocation = [stringCoordinate[0], stringCoordinate[1]];
+			} else {
+				curLocation = defLocation;
+			}
+
+			var marker = new L.marker(curLocation, {
+				draggable : false,
+				icon: greenIcon
+			});
+
+			if (curLocation !== defLocation) map.addLayer(marker);
+		});
+
     // get coordinat onclick
-    var posisi = document.querySelector("[name=lokasi_personil]");
-    map.on("click",function(event){
-        var lat = event.latlng.lat;
-        var lng = event.latlng.lng;
+    // var posisi = document.querySelector("[name=lokasi_personil]");
+    // map.on("click",function(event){
+    //     var lat = event.latlng.lat;
+    //     var lng = event.latlng.lng;
 
-        if (!marker)
-        {
-            marker = L.marker(event.latlng).addTo(map);
-        }else{
-            marker.setLatLng(event.latlng);
-        }
+    //     if (!marker)
+    //     {
+    //         marker = L.marker(event.latlng).addTo(map);
+    //     }else{
+    //         marker.setLatLng(event.latlng);
+    //     }
 
-        posisi.value = lat + "," + lng;
-    });
+    //     posisi.value = lat + "," + lng;
+    // });
     
 </script>
 @endsection

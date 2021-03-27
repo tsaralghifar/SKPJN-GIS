@@ -26,7 +26,7 @@ class PersonilRequest extends FormRequest
         return [
             'personel' => 'required|max:225',
             'jumlah' => 'required|max:225',
-            'lokasi_personil' => 'required|max:225'
+            'id_site' => 'required|max:225|integer'
         ];
     }
 }
