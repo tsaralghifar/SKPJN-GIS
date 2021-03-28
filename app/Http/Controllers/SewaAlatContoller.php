@@ -40,7 +40,7 @@ class SewaAlatContoller extends Controller
      */
     public function store(SewaAlatRequest $request)
     {
-        $data = $request->all();
+        $data = $request->validated();
         $data['slug'] = Str::slug($request->jenis_alat);
 
         Sewaalat::create($data);
@@ -81,7 +81,7 @@ class SewaAlatContoller extends Controller
      */
     public function update(SewaAlatRequest $request, $id)
     {
-        $data = $request->all();
+        $data = $request->validated();
         $data['slug'] = Str::slug($request->jenis_alat);
 
         $sewa = Sewaalat::findOrFail($id);

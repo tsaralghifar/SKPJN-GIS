@@ -40,7 +40,7 @@ class AnggaranKeluarController extends Controller
      */
     public function store(AnggaranKeluarRequest $request)
     {
-        $data = $request->all();
+        $data = $request->validated();
         $data['slug'] = Str::slug($request->jumlah_keluar);
 
         Anggarankeluar::create($data);
@@ -81,7 +81,7 @@ class AnggaranKeluarController extends Controller
      */
     public function update(AnggaranKeluarRequest $request, $id)
     {
-        $data = $request->all();
+        $data = $request->validated();
         $data['slug'] = Str::slug($request->jumlah_keluar);
 
         $keluar = Anggarankeluar::findOrFail($id);

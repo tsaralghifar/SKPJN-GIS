@@ -40,7 +40,7 @@ class AnggaranMasukController extends Controller
      */
     public function store(AnggaranMasukRequest $request)
     {
-        $data = $request->all();
+        $data = $request->validated();
         $data['slug'] = Str::slug($request->jumlah_masuk);
 
         Anggaranmasuk::create($data);
@@ -81,7 +81,7 @@ class AnggaranMasukController extends Controller
      */
     public function update(AnggaranMasukRequest $request, $id)
     {
-        $data = $request->all();
+        $data = $request->validated();
         $data['slug'] = Str::slug($request->jumlah_masuk);
 
         $masuk = Anggaranmasuk::findOrFail($id);
