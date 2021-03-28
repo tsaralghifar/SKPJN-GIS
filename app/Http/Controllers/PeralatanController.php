@@ -83,7 +83,7 @@ class PeralatanController extends Controller
      */
     public function update(PeralatanRequest $request, $id)
     {
-        $data = $request->all();
+        $data = $request->validated();
         $data['slug'] = Str::slug($request->alat);
 
         $peralatan = Peralatan::findOrFail($id);

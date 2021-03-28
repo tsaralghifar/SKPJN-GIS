@@ -15,6 +15,12 @@ class Anggaranmasuk extends Model
         'jumlah_masuk',
         'slug',
         'waktu',
-        'penanggung_jawab'
+        'penanggung_jawab',
+        'id_site'
     ];
+
+    public function lokasi()
+    {
+        return $this->belongsTo(SiteProyek::class, 'id_site', 'id');
+    }
 }

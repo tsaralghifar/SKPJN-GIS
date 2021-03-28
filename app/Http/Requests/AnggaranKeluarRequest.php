@@ -26,7 +26,8 @@ class AnggaranKeluarRequest extends FormRequest
         return [
             'jumlah_keluar' => 'required|max:225',
             'waktu' => 'required',
-            'penanggung_jawab' => 'required|max:225'
+            'penanggung_jawab' => 'required|max:225',
+            'id_site' => 'required|integer'
         ];
     }
 }

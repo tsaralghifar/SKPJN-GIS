@@ -17,6 +17,19 @@
                         @else
                             wire:submit.prevent="saveLocation"
                         @endif --}}
+
+                        <div class="form-group">
+							<label>Lokasi</label>
+							<select name="id_site" id="id_site" class="form-control @error('id_site') is-invalid @enderror">
+								<option value=""> ** Daftar Proyek ** </option>
+							@foreach($site as $lokasi)
+								<option value="{{ $lokasi->id }}" @if($masuk->id_site == $lokasi->id) selected @endif>{{ $lokasi->nama_proyek }}</option>
+							@endforeach
+							</select>
+							@error('id_site') 
+								<div class="text-danger">{{ $message }}</div> 
+							@enderror
+						</div>
                     
                         <div class="form-group">
                             <label>Jumlah Masuk</label>
@@ -30,7 +43,7 @@
                             <label>Jam</label>
                             <input type="datetime-local"
                                    name="waktu"
-                                   value="{{ old('waktu') ? old('waktu') : $masuk->waktu }}"
+                                   value="{{ old('waktu') ? old('waktu') : date('Y-m-d h:i', strtotime($masuk->waktu)) }}"
                                    class="form-control @error('waktu') is-invalid @enderror"/>
                                    @error('waktu') <div class="text-muted">{{ $message }}</div> @enderror
                         </div>
@@ -52,4 +65,15 @@
     </div>
 </div>
 
+@endsection
+
+@section('javascript-section')
+<script>
+$(document).ready(function() {
+    $('#id_site').select2({
+        theme: 'bootstrap4',
+        width: '100%'
+    });
+});
+</script>
 @endsection

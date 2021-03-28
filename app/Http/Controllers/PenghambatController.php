@@ -40,7 +40,7 @@ class PenghambatController extends Controller
      */
     public function store(PenghambatRequest $request)
     {
-        $data = $request->all();
+        $data = $request->validated();
         $data['slug'] = Str::slug($request->jenis_kejadian);
 
         Penghambat::create($data);
@@ -81,7 +81,7 @@ class PenghambatController extends Controller
      */
     public function update(PenghambatRequest $request, $id)
     {
-        $data = $request->all();
+        $data = $request->validated();
         $data['slug'] = Str::slug($request->jenis_kejadian);
 
         $penghambat = Penghambat::findOrFail($id);

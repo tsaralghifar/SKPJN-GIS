@@ -19,7 +19,10 @@ class CreateAnggaranMasukTable extends Migration
             $table->string('slug');
             $table->timestamp('waktu', $precision = 0);
             $table->string('penanggung_jawab');
+            $table->unsignedBigInteger('id_site')->nullable();
             $table->timestamps();
+
+            $table->foreign('id_site')->references('id')->on('site_proyek')->onDelete('set null');
         });
     }
 

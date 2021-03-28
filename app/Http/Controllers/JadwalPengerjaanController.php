@@ -42,7 +42,7 @@ class JadwalPengerjaanController extends Controller
      */
     public function store(JadwalPengerjaanRequest $request)
     {
-        $data = $request->all();
+        $data = $request->validated();
 
         jadwal::create($data);
         return redirect()->route('jadwal');
@@ -84,7 +84,7 @@ class JadwalPengerjaanController extends Controller
      */
     public function update(JadwalPengerjaanRequest $request, $id)
     {
-        $data = $request->all();
+        $data = $request->validated();
 
         $jadwal = Jadwal::findOrFail($id);
         $jadwal->update($data);

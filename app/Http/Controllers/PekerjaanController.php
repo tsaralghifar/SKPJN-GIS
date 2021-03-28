@@ -81,7 +81,7 @@ class PekerjaanController extends Controller
      */
     public function update(PekerjaanRequest $request, $id)
     {
-        $data = $request->all();
+        $data = $request->validated();
 
         $pekerjaan = Pekerjaan::findOrFail($id);
         $pekerjaan->update($data);

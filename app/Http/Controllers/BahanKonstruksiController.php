@@ -40,7 +40,7 @@ class BahanKonstruksiController extends Controller
      */
     public function store(BahanKonstruksiRequest $request)
     {
-        $data = $request->all();
+        $data = $request->validated();
         $data['slug'] = Str::slug($request->material);
 
         Bahankonstruksi::create($data);
@@ -81,7 +81,7 @@ class BahanKonstruksiController extends Controller
      */
     public function update(BahanKonstruksiRequest $request, $id)
     {
-        $data = $request->all();
+        $data = $request->validated();
         $data['slug'] = Str::slug($request->material);
 
         $bahan = Bahankonstruksi::findOrFail($id);

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Models\Anggarankeluar;
 use App\Http\Requests\AnggaranKeluarRequest;
+use App\Models\SiteProyek;
 
 class AnggaranKeluarController extends Controller
 {
@@ -17,9 +18,9 @@ class AnggaranKeluarController extends Controller
     public function index()
     {
         $keluar = Anggarankeluar::all();
-        return view('pages.anggaran.keluar.index')->with([
-            'keluar' => $keluar
-        ]);
+        $site = SiteProyek::all();
+        
+        return view('pages.anggaran.keluar.index', compact('keluar', 'site'));
     }
 
     /**
@@ -29,7 +30,8 @@ class AnggaranKeluarController extends Controller
      */
     public function create()
     {
-        return view('pages.anggaran.keluar.create');
+        $site = SiteProyek::all();
+        return view('pages.anggaran.keluar.create', compact('site'));
     }
 
     /**
@@ -40,7 +42,7 @@ class AnggaranKeluarController extends Controller
      */
     public function store(AnggaranKeluarRequest $request)
     {
-        $data = $request->all();
+        $data = $request->validated();
         $data['slug'] = Str::slug($request->jumlah_keluar);
 
         Anggarankeluar::create($data);
@@ -67,9 +69,9 @@ class AnggaranKeluarController extends Controller
     public function edit($id)
     {
         $keluar =  Anggarankeluar::findOrFail($id);
-        return view('pages.anggaran.keluar.edit')->with([
-            'keluar' => $keluar
-        ]);
+        $site = SiteProyek::all();
+
+        return view('pages.anggaran.keluar.edit', compact('site', 'keluar'));
     }
 
     /**
@@ -81,7 +83,7 @@ class AnggaranKeluarController extends Controller
      */
     public function update(AnggaranKeluarRequest $request, $id)
     {
-        $data = $request->all();
+        $data = $request->validated();
         $data['slug'] = Str::slug($request->jumlah_keluar);
 
         $keluar = Anggarankeluar::findOrFail($id);

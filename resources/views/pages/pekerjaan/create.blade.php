@@ -19,13 +19,13 @@
                     
                         <div class="form-group">
 							<label>Nama Pekerjaan</label>
-							<select name="nama_pekerjaan" id="nama_pekerjaan" class="form-control @error('nama_pekerjaan') is-invalid @enderror">
+							<select name="id_site" id="id_site" class="form-control @error('id_site') is-invalid @enderror">
 								<option value=""> ** Daftar Proyek ** </option>
 							@foreach($site as $lokasi)
 								<option value="{{ $lokasi->id }}">{{ $lokasi->nama_proyek }}</option>
 							@endforeach
 							</select>
-							@error('nama_pekerjaan') 
+							@error('id_site') 
 								<div class="text-danger">{{ $message }}</div> 
 							@enderror
 						</div>
@@ -55,4 +55,15 @@
     </div>
 </div>
 
+@endsection
+
+@section('javascript-section')
+<script>
+$(document).ready(function() {
+    $('#id_site').select2({
+        theme: 'bootstrap4',
+        width: '100%'
+    });
+});
+</script>
 @endsection

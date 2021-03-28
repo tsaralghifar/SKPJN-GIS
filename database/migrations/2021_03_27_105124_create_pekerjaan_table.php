@@ -15,10 +15,12 @@ class CreatePekerjaanTable extends Migration
     {
         Schema::create('pekerjaan', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_pekerjaan');
             $table->string('jenis_pekerjaan');
             $table->integer('perkiraan_anggaran');
+            $table->unsignedBigInteger('id_site')->nullable();
             $table->timestamps();
+            
+            $table->foreign('id_site')->references('id')->on('site_proyek')->onDelete('set null');
         });
     }
 
