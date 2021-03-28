@@ -53,7 +53,7 @@
               @foreach ($jadwal as $data)
               <tr>
                 <td>{{ $loop->iteration }}</td>
-                <td>{{$data->proyek_name}}</td>
+                <td>{{ $data->proyek->nama_proyek }}</td>
                 <td>{{$data->jadwal_pengerjaan}}</td>
                 <td>{{$data->jadwal_estimasi}}</td>
                 <td class="text-center">

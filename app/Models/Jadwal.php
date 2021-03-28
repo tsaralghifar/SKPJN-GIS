@@ -16,4 +16,9 @@ class Jadwal extends Model
         'jadwal_pengerjaan',
         'jadwal_estimasi'
     ];
+
+    public function proyek()
+    {
+        return $this->belongsTo(SiteProyek::class, 'proyek_name', 'id');
+    }
 }

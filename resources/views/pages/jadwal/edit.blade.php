@@ -19,13 +19,17 @@
                         @endif --}}
                     
                         <div class="form-group">
-                            <label>Nama Proyek</label>
-                            <input type="text"
-                                   name="proyek_name"
-                                   value="{{ old('proyek_name') ? old('proyek_name') : $jadwal->proyek_name }}"
-                                   class="form-control @error('proyek_name') is-invalid @enderror"/>
-                                   @error('proyek_name') <div class="text-muted">{{ $message }}</div> @enderror
-                        </div>
+							<label>Nama Proyek</label>
+							<select name="proyek_name" id="proyek_name" class="form-control @error('proyek_name') is-invalid @enderror">
+								<option value=""> ** Daftar Proyek ** </option>
+							@foreach($site as $lokasi)
+								<option value="{{ $lokasi->id }}" @if($jadwal->proyek_name == $lokasi->id) selected @endif>{{ $lokasi->nama_proyek }}</option>
+							@endforeach
+							</select>
+							@error('proyek_name') 
+								<div class="text-danger">{{ $message }}</div> 
+							@enderror
+						</div>
                         <div class="form-group">
                             <label>Jadwal Pengerjaan</label>
                             <input type="date"
