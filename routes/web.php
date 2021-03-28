@@ -92,4 +92,11 @@ Route::middleware(['auth'])->group( function() {
   Route::get('/sewa-alat/{id}', [\App\Http\Controllers\SewaAlatContoller::class, 'edit'])->name('sewa-alat.edit');
   Route::put('/sewa-alat/{id}', [\App\Http\Controllers\SewaAlatContoller::class, 'update'])->name('sewa-alat.update');
   Route::delete('/sewa-alat/{id}', [\App\Http\Controllers\SewaAlatContoller::class, 'destroy'])->name('sewa-alat.destroy');
+  // Progress
+  Route::get('/progress', [\App\Http\Controllers\ProgressProyekController::class, 'index'])->name('progress');
+  Route::get('/progress/create', [\App\Http\Controllers\ProgressProyekController::class, 'create'])->name('progress.create');
+  Route::post('/progress/store', [\App\Http\Controllers\ProgressProyekController::class, 'store'])->name('progress.store');
+  Route::get('/progress/{id}', [\App\Http\Controllers\ProgressProyekController::class, 'edit'])->name('progress.edit');
+  Route::put('/progress/{id}', [\App\Http\Controllers\ProgressProyekController::class, 'update'])->name('progress.update');
+  Route::delete('/progress/{id}', [\App\Http\Controllers\ProgressProyekController::class, 'destroy'])->name('progress.destroy');
 });

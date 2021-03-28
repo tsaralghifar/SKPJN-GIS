@@ -9,7 +9,7 @@
                     Form
                 </div>
                 <div class="card-body">
-                    <form action="{{route('jadwal.store')}}" method="POST">
+                    <form action="{{route('progress.store')}}" method="POST">
                         @csrf
                         {{-- @if ($idEdit)
                             wire:submit.prevent="updateLocation"
@@ -19,31 +19,31 @@
                     
                         <div class="form-group">
 							<label>Nama Proyek</label>
-							<select name="proyek_name" id="proyek_name" class="form-control @error('proyek_name') is-invalid @enderror">
+							<select name="id_proyek" id="id_proyek" class="form-control @error('id_proyek') is-invalid @enderror">
 								<option value=""> ** Daftar Proyek ** </option>
 							@foreach($site as $lokasi)
 								<option value="{{ $lokasi->id }}">{{ $lokasi->nama_proyek }}</option>
 							@endforeach
 							</select>
-							@error('proyek_name') 
+							@error('id_proyek') 
 								<div class="text-danger">{{ $message }}</div> 
 							@enderror
 						</div>
                         <div class="form-group">
-                            <label>Jadwal Pengerjaan</label>
+                            <label>Tanggal</label>
                             <input type="date"
-                                   name="jadwal_pengerjaan"
-                                   value="{{ old('jadwal_pengerjaan') }}"
-                                   class="form-control @error('jadwal_pengerjaan') is-invalid @enderror"/>
-                                   @error('jadwal_pengerjaan') <div class="text-muted">{{ $message }}</div> @enderror
+                                   name="tanggal_progress"
+                                   value="{{ old('tanggal_progress') }}"
+                                   class="form-control @error('tanggal_progress') is-invalid @enderror"/>
+                                   @error('tanggal_progress') <div class="text-muted">{{ $message }}</div> @enderror
                         </div>
                         <div class="form-group">
-                            <label>Jadwal Estimasi</label>
-                            <input type="date"
-                                   name="jadwal_estimasi"
-                                   value="{{ old('jadwal_estimasi') }}"
-                                   class="form-control @error('jadwal_estimasi') is-invalid @enderror"/>
-                                   @error('jadwal_estimasi') <div class="text-muted">{{ $message }}</div> @enderror
+                            <label>Kemajuan</label>
+                            <input type="text"
+                                   name="kemajuan"
+                                   value="{{ old('kemajuan') }}"
+                                   class="form-control @error('kemajuan') is-invalid @enderror"/>
+                                   @error('kemajuan') <div class="text-muted">{{ $message }}</div> @enderror
                         </div>
                         <div class="form-group">
                             <button type="submit" class="btn btn-dark text-white btn-block">Save</button>

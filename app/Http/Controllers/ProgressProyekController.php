@@ -3,12 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-// use Illuminate\Support\Str;
-use App\Models\Jadwal;
-use App\Http\Requests\JadwalPengerjaanRequest;
+use App\Models\Progress;
+use App\Http\Requests\ProgressProyekRequest;
 use App\Models\SiteProyek;
 
-class JadwalPengerjaanController extends Controller
+class ProgressProyekController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,9 +16,9 @@ class JadwalPengerjaanController extends Controller
      */
     public function index()
     {
-        $jadwal = Jadwal::all();
-        return view('pages.jadwal.index')->with([
-            'jadwal' => $jadwal
+        $progress = Progress::all();
+        return view('pages.progress.index')->with([
+            'progress' => $progress
         ]);
     }
 
@@ -31,7 +30,7 @@ class JadwalPengerjaanController extends Controller
     public function create()
     {
         $site = SiteProyek::all();
-        return view('pages.jadwal.create', compact('site'));
+        return view('pages.progress.create', compact('site'));
     }
 
     /**
@@ -40,12 +39,12 @@ class JadwalPengerjaanController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(JadwalPengerjaanRequest $request)
+    public function store(ProgressProyekRequest $request)
     {
         $data = $request->validated();
 
-        jadwal::create($data);
-        return redirect()->route('jadwal');
+        Progress::create($data);
+        return redirect()->route('progress');
     }
 
     /**
@@ -68,11 +67,9 @@ class JadwalPengerjaanController extends Controller
     public function edit($id)
     {
         $site = SiteProyek::all();
-        $jadwal =  Jadwal::findOrFail($id);
-        return view('pages.jadwal.edit')->with([
-            'jadwal' => $jadwal,
-            'site' => $site
-        ]);
+        $progress =  Progress::findOrFail($id);
+        
+        return view('pages.progress.edit', compact('progress', 'site'));
     }
 
     /**
@@ -82,14 +79,14 @@ class JadwalPengerjaanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(JadwalPengerjaanRequest $request, $id)
+    public function update(ProgressProyekRequest $request, $id)
     {
-        $data = $request->validated();
+        $data = $request->all();
 
-        $jadwal = Jadwal::findOrFail($id);
-        $jadwal->update($data);
+        $progress = Progress::findOrFail($id);
+        $progress->update($data);
 
-        return redirect()->route('jadwal');
+        return redirect()->route('progress');
     }
 
     /**
@@ -100,9 +97,9 @@ class JadwalPengerjaanController extends Controller
      */
     public function destroy($id)
     {
-        $jadwal = Jadwal::findOrFail($id);
-        $jadwal->delete();
+        $progress = Progress::findOrFail($id);
+        $progress->delete();
 
-        return redirect()->route('jadwal');
+        return redirect()->route('progress');
     }
 }
