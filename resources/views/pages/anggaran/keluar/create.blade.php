@@ -9,7 +9,7 @@
                     Form
                 </div>
                 <div class="card-body">
-                    <form action="{{route('keluar.store')}}" method="POST">
+                    <form action="{{route('anggaran-keluar.store')}}" method="POST">
                         @csrf
                         {{-- @if ($idEdit)
                             wire:submit.prevent="updateLocation"

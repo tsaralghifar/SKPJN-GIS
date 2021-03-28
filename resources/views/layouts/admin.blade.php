@@ -18,6 +18,9 @@
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
   <!-- Leaflet -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
+  <!-- Select2 -->
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ttskch/select2-bootstrap4-theme@x.x.x/dist/select2-bootstrap4.min.css">
 </head>
 <!--
 BODY TAG OPTIONS:
@@ -144,13 +147,13 @@ to get the desired effect
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="{{ route('masuk') }}" class="nav-link">
+                  <a href="{{ route('anggaran-masuk') }}" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Anggaran Masuk</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="{{ route('keluar') }}" class="nav-link">
+                  <a href="{{ route('anggaran-keluar') }}" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Anggaran Keluar</p>
                   </a>
@@ -220,6 +223,8 @@ to get the desired effect
   <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
   <!-- AdminLTE -->
   <script src="{{ asset('js/template.js') }}"></script>
+
+	<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
   <!-- OPTIONAL SCRIPTS -->
   @yield('javascript-section')

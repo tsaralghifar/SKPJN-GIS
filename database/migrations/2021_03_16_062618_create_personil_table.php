@@ -13,7 +13,7 @@ class CreatePersonilTable extends Migration
      */
     public function up()
     {
-        Schema::create('personils', function (Blueprint $table) {
+        Schema::create('personil', function (Blueprint $table) {
             $table->id('id');
             $table->string('personel');
             $table->string('slug');

@@ -9,8 +9,12 @@ class Pekerjaan extends Model
 {
     use HasFactory;
 
+    protected $table = 'pekerjaan';
+
     protected $fillable = [
-        'nama_pekerjaan','jenis_pekerjaan','perkiraan_anggaran'
+        'nama_pekerjaan',
+        'jenis_pekerjaan',
+        'perkiraan_anggaran'
     ];
 
     public function proyek()

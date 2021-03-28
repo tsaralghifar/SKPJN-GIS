@@ -9,7 +9,12 @@ class Bahankonstruksi extends Model
 {
     use HasFactory;
 
+    protected $table = 'bahan_konstruksi';
+
     protected $fillable = [
-        'material','slug','satuan','volume'
+        'material',
+        'slug',
+        'satuan',
+        'volume'
     ];
 }

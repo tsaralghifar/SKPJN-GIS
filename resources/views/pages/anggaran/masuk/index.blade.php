@@ -26,7 +26,7 @@
           <h3 class="card-title">Anggaran Masuk</h3>
 
           <div class="text-right">
-            <a class="btn btn-primary btn-sm" title="Create" href="{{ route('masuk.create') }}">
+            <a class="btn btn-primary btn-sm" title="Create" href="{{ route('anggaran-masuk.create') }}">
               Create
             </a>     
           </div>
@@ -57,10 +57,10 @@
                 <td>{{$data->waktu}}</td>
                 <td>{{$data->penanggung_jawab}}</td>
                 <td class="text-center">
-                  <a href="{{ route('masuk.edit', $data->id) }}" class="btn btn-primary btn-sm">
+                  <a href="{{ route('anggaran-masuk.edit', $data->id) }}" class="btn btn-primary btn-sm">
                     <i class="fa fa-edit"></i>
                   </a>
-                  <form action="{{ route('masuk.destroy', $data->id) }}" method="post" class="d-inline">
+                  <form action="{{ route('anggaran-masuk.destroy', $data->id) }}" method="post" class="d-inline">
                     @csrf
                     @method('delete')
                     <button class="btn btn-danger btn-sm">

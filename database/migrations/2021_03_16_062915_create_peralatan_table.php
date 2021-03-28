@@ -13,7 +13,7 @@ class CreatePeralatanTable extends Migration
      */
     public function up()
     {
-        Schema::create('peralatans', function (Blueprint $table) {
+        Schema::create('peralatan', function (Blueprint $table) {
             $table->id('id');
             $table->string('alat');
             $table->string('slug');
