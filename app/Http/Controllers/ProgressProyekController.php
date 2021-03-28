@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Progress;
+use App\Http\Requests\ProgressProyekRequest;
+use App\Models\SiteProyek;
 
 class ProgressProyekController extends Controller
 {
@@ -13,7 +16,10 @@ class ProgressProyekController extends Controller
      */
     public function index()
     {
-        //
+        $progress = Progress::all();
+        return view('pages.progress.index')->with([
+            'progress' => $progress
+        ]);
     }
 
     /**
@@ -23,7 +29,8 @@ class ProgressProyekController extends Controller
      */
     public function create()
     {
-        //
+        $site = SiteProyek::all();
+        return view('pages.progress.create', compact('site'));
     }
 
     /**
@@ -32,9 +39,12 @@ class ProgressProyekController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProgressProyekRequest $request)
     {
-        //
+        $data = $request->validated();
+
+        Progress::create($data);
+        return redirect()->route('progress');
     }
 
     /**
@@ -56,7 +66,10 @@ class ProgressProyekController extends Controller
      */
     public function edit($id)
     {
-        //
+        $site = SiteProyek::all();
+        $progress =  Progress::findOrFail($id);
+        
+        return view('pages.progress.edit', compact('progress', 'site'));
     }
 
     /**
@@ -66,9 +79,14 @@ class ProgressProyekController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ProgressProyekRequest $request, $id)
     {
-        //
+        $data = $request->all();
+
+        $progress = Progress::findOrFail($id);
+        $progress->update($data);
+
+        return redirect()->route('progress');
     }
 
     /**
@@ -79,6 +97,9 @@ class ProgressProyekController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $progress = Progress::findOrFail($id);
+        $progress->delete();
+
+        return redirect()->route('progress');
     }
 }

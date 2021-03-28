@@ -13,7 +13,7 @@ class ProgressProyekRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,9 @@ class ProgressProyekRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'id_proyek' => 'required',
+            'tanggal_progress' => 'required',
+            'kemajuan' => 'required'
         ];
     }
 }
