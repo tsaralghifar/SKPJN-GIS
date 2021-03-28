@@ -24,7 +24,7 @@ class PekerjaanRequest extends FormRequest
     public function rules()
     {
         return [
-            'nama_pekerjaan' => 'required',
+            'id_site' => 'required',
             'jenis_pekerjaan' => 'required',
             'perkiraan_anggaran' => 'required'
         ];

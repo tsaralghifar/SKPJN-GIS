@@ -18,4 +18,9 @@ class Anggarankeluar extends Model
         'penanggung_jawab',
         'id_site'
     ];
+
+    public function lokasi()
+    {
+        return $this->belongsTo(SiteProyek::class, 'id_site', 'id');
+    }
 }

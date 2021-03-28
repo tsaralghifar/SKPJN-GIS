@@ -12,13 +12,13 @@ class Pekerjaan extends Model
     protected $table = 'pekerjaan';
 
     protected $fillable = [
-        'nama_pekerjaan',
+        'id_site',
         'jenis_pekerjaan',
         'perkiraan_anggaran'
     ];
 
     public function proyek()
     {
-        return $this->belongsTo(SiteProyek::class, 'nama_pekerjaan', 'id');
+        return $this->belongsTo(SiteProyek::class, 'id_site', 'id');
     }
 }
