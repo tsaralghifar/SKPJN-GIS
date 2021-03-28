@@ -181,7 +181,7 @@ to get the desired effect
             </li>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link">
+              <a href="{{ route('sewa-alat')}}" class="nav-link">
                 <i class="nav-icon fas fa-info-circle"></i>
                 <p>
                   Info Sewa Alat

@@ -85,4 +85,11 @@ Route::middleware(['auth'])->group( function() {
   Route::get('/pekerjaan/{id}', [\App\Http\Controllers\PekerjaanController::class, 'edit'])->name('pekerjaan.edit');
   Route::put('/pekerjaan/{id}', [\App\Http\Controllers\PekerjaanController::class, 'update'])->name('pekerjaan.update');
   Route::delete('/pekerjaan/{id}', [\App\Http\Controllers\PekerjaanController::class, 'destroy'])->name('pekerjaan.destroy');
+  // Sewa Alat
+  Route::get('/sewa-alat', [\App\Http\Controllers\SewaAlatContoller::class, 'index'])->name('sewa-alat');
+  Route::get('/sewa-alat/create', [\App\Http\Controllers\SewaAlatContoller::class, 'create'])->name('sewa-alat.create');
+  Route::post('/sewa-alat/store', [\App\Http\Controllers\SewaAlatContoller::class, 'store'])->name('sewa-alat.store');
+  Route::get('/sewa-alat/{id}', [\App\Http\Controllers\SewaAlatContoller::class, 'edit'])->name('sewa-alat.edit');
+  Route::put('/sewa-alat/{id}', [\App\Http\Controllers\SewaAlatContoller::class, 'update'])->name('sewa-alat.update');
+  Route::delete('/sewa-alat/{id}', [\App\Http\Controllers\SewaAlatContoller::class, 'destroy'])->name('sewa-alat.destroy');
 });
