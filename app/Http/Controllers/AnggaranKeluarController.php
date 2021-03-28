@@ -44,7 +44,7 @@ class AnggaranKeluarController extends Controller
         $data['slug'] = Str::slug($request->jumlah_keluar);
 
         Anggarankeluar::create($data);
-        return redirect()->route('keluar');
+        return redirect()->route('anggaran-keluar');
     }
 
     /**
@@ -87,7 +87,7 @@ class AnggaranKeluarController extends Controller
         $keluar = Anggarankeluar::findOrFail($id);
         $keluar->update($data);
 
-        return redirect()->route('keluar');
+        return redirect()->route('anggaran-keluar');
     }
 
     /**
@@ -101,6 +101,6 @@ class AnggaranKeluarController extends Controller
         $keluar = Anggarankeluar::findOrFail($id);
         $keluar->delete();
 
-        return redirect()->route('keluar');
+        return redirect()->route('anggaran-keluar');
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBahankonstruksiTable extends Migration
+class CreateSewaAlatTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,13 @@ class CreateBahankonstruksiTable extends Migration
      */
     public function up()
     {
-        Schema::create('bahankonstruksis', function (Blueprint $table) {
-            $table->id('id');
-            $table->string('material');
+        Schema::create('sewa_alat', function (Blueprint $table) {
+            $table->id();
+            $table->string('jenis_alat');
             $table->string('slug');
-            $table->string('satuan');
-            $table->string('volume');
+            $table->date('tanggal_sewa');
+            $table->string('keperluan');
+            $table->integer('biaya_sewa');
             $table->timestamps();
         });
     }
@@ -30,6 +31,6 @@ class CreateBahankonstruksiTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bahankonstruksi');
+        Schema::dropIfExists('sewa_alat');
     }
 }

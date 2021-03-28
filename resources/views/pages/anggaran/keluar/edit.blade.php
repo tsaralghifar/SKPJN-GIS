@@ -9,7 +9,7 @@
                     Form
                 </div>
                 <div class="card-body">
-                    <form action="{{route('keluar.update', $keluar->id)}}" method="POST">
+                    <form action="{{route('anggaran-keluar.update', $keluar->id)}}" method="POST">
                         @method('PUT')
                         @csrf
                         {{-- @if ($idEdit)

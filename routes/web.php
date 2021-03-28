@@ -51,19 +51,19 @@ Route::middleware(['auth'])->group( function() {
   Route::put('/penghambat/update/{id}', [App\Http\Controllers\PenghambatController::class, 'update'])->name('penghambat.update');
   Route::delete('/penghambat/destroy/{id}', [App\Http\Controllers\PenghambatController::class, 'destroy'])->name('penghambat.destroy');
   // Anggaran Masuk
-  Route::get('/masuk', [App\Http\Controllers\AnggaranMasukController::class, 'index'])->name('masuk');
-  Route::get('/masuk/create', [App\Http\Controllers\AnggaranMasukController::class, 'create'])->name('masuk.create');
-  Route::post('/masuk/store', [App\Http\Controllers\AnggaranMasukController::class, 'store'])->name('masuk.store');
-  Route::get('/masuk/edit/{id}', [App\Http\Controllers\AnggaranMasukController::class, 'edit'])->name('masuk.edit');
-  Route::put('/masuk/update/{id}', [App\Http\Controllers\AnggaranMasukController::class, 'update'])->name('masuk.update');
-  Route::delete('/masuk/destroy/{id}', [App\Http\Controllers\AnggaranMasukController::class, 'destroy'])->name('masuk.destroy');
+  Route::get('/anggaran-masuk', [App\Http\Controllers\AnggaranMasukController::class, 'index'])->name('anggaran-masuk');
+  Route::get('/anggaran-masuk/create', [App\Http\Controllers\AnggaranMasukController::class, 'create'])->name('anggaran-masuk.create');
+  Route::post('/anggaran-masuk/store', [App\Http\Controllers\AnggaranMasukController::class, 'store'])->name('anggaran-masuk.store');
+  Route::get('/anggaran-masuk/edit/{id}', [App\Http\Controllers\AnggaranMasukController::class, 'edit'])->name('anggaran-masuk.edit');
+  Route::put('/anggaran-masuk/update/{id}', [App\Http\Controllers\AnggaranMasukController::class, 'update'])->name('anggaran-masuk.update');
+  Route::delete('/anggaran-masuk/destroy/{id}', [App\Http\Controllers\AnggaranMasukController::class, 'destroy'])->name('anggaran-masuk.destroy');
   // Anggaran Keluar
-  Route::get('/keluar', [App\Http\Controllers\AnggaranKeluarController::class, 'index'])->name('keluar');
-  Route::get('/keluar/create', [App\Http\Controllers\AnggaranKeluarController::class, 'create'])->name('keluar.create');
-  Route::post('/keluar/store', [App\Http\Controllers\AnggaranKeluarController::class, 'store'])->name('keluar.store');
-  Route::get('/keluar/edit/{id}', [App\Http\Controllers\AnggaranKeluarController::class, 'edit'])->name('keluar.edit');
-  Route::put('/keluar/update/{id}', [App\Http\Controllers\AnggaranKeluarController::class, 'update'])->name('keluar.update');
-  Route::delete('/keluar/destroy/{id}', [App\Http\Controllers\AnggaranKeluarController::class, 'destroy'])->name('keluar.destroy');
+  Route::get('/anggaran-keluar', [App\Http\Controllers\AnggaranKeluarController::class, 'index'])->name('anggaran-keluar');
+  Route::get('/anggaran-keluar/create', [App\Http\Controllers\AnggaranKeluarController::class, 'create'])->name('anggaran-keluar.create');
+  Route::post('/anggaran-keluar/store', [App\Http\Controllers\AnggaranKeluarController::class, 'store'])->name('anggaran-keluar.store');
+  Route::get('/anggaran-keluar/edit/{id}', [App\Http\Controllers\AnggaranKeluarController::class, 'edit'])->name('anggaran-keluar.edit');
+  Route::put('/anggaran-keluar/update/{id}', [App\Http\Controllers\AnggaranKeluarController::class, 'update'])->name('anggaran-keluar.update');
+  Route::delete('/anggaran-keluar/destroy/{id}', [App\Http\Controllers\AnggaranKeluarController::class, 'destroy'])->name('anggaran-keluar.destroy');
   // Site Proyek
   Route::get('/site-proyek', [\App\Http\Controllers\SiteProyekController::class, 'index'])->name('site');
   Route::get('/site-proyek/create', [\App\Http\Controllers\SiteProyekController::class, 'create'])->name('site.create');

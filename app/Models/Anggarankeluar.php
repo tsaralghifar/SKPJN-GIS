@@ -9,7 +9,12 @@ class Anggarankeluar extends Model
 {
     use HasFactory;
 
+    protected $table = 'anggaran_keluar';
+
     protected $fillable = [
-        'jumlah_keluar','slug','waktu','penanggung_jawab'
+        'jumlah_keluar',
+        'slug',
+        'waktu',
+        'penanggung_jawab'
     ];
 }

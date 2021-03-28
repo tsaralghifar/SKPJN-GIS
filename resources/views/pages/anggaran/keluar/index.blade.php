@@ -26,7 +26,7 @@
           <h3 class="card-title">List</h3>
 
           <div class="text-right">
-            <a class="btn btn-primary btn-sm" title="Create" href="{{ route('keluar.create') }}">
+            <a class="btn btn-primary btn-sm" title="Create" href="{{ route('anggaran-keluar.create') }}">
               Create
             </a>     
           </div>
@@ -57,10 +57,10 @@
                 <td>{{$data->waktu}}</td>
                 <td>{{$data->penanggung_jawab}}</td>
                 <td class="text-center">
-                  <a href="{{ route('keluar.edit', $data->id) }}" class="btn btn-primary btn-sm">
+                  <a href="{{ route('anggaran-keluar.edit', $data->id) }}" class="btn btn-primary btn-sm">
                     <i class="fa fa-edit"></i>
                   </a>
-                  <form action="{{ route('keluar.destroy', $data->id) }}" method="post" class="d-inline">
+                  <form action="{{ route('anggaran-keluar.destroy', $data->id) }}" method="post" class="d-inline">
                     @csrf
                     @method('delete')
                     <button class="btn btn-danger btn-sm">

@@ -44,7 +44,7 @@ class AnggaranMasukController extends Controller
         $data['slug'] = Str::slug($request->jumlah_masuk);
 
         Anggaranmasuk::create($data);
-        return redirect()->route('masuk');
+        return redirect()->route('anggaran-masuk');
     }
 
     /**
@@ -87,7 +87,7 @@ class AnggaranMasukController extends Controller
         $masuk = Anggaranmasuk::findOrFail($id);
         $masuk->update($data);
 
-        return redirect()->route('masuk');
+        return redirect()->route('anggaran-masuk');
     }
 
     /**
@@ -101,6 +101,6 @@ class AnggaranMasukController extends Controller
         $masuk = Anggaranmasuk::findOrFail($id);
         $masuk->delete();
 
-        return redirect()->route('masuk');
+        return redirect()->route('anggaran-masuk');
     }
 }

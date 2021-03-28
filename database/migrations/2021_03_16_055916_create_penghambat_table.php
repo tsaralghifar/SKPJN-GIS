@@ -13,7 +13,7 @@ class CreatePenghambatTable extends Migration
      */
     public function up()
     {
-        Schema::create('penghambats', function (Blueprint $table) {
+        Schema::create('penghambat', function (Blueprint $table) {
             $table->id();
             $table->string('jenis_kejadian');
             $table->string('slug');

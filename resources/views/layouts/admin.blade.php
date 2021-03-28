@@ -147,13 +147,13 @@ to get the desired effect
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="{{ route('masuk') }}" class="nav-link">
+                  <a href="{{ route('anggaran-masuk') }}" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Anggaran Masuk</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="{{ route('keluar') }}" class="nav-link">
+                  <a href="{{ route('anggaran-keluar') }}" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Anggaran Keluar</p>
                   </a>
