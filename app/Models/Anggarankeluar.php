@@ -15,6 +15,7 @@ class Anggarankeluar extends Model
         'jumlah_keluar',
         'slug',
         'waktu',
-        'penanggung_jawab'
+        'penanggung_jawab',
+        'id_site'
     ];
 }

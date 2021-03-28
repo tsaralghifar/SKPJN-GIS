@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Models\Anggaranmasuk;
 use App\Http\Requests\AnggaranMasukRequest;
+use App\Models\SiteProyek;
 
 class AnggaranMasukController extends Controller
 {
@@ -17,9 +18,7 @@ class AnggaranMasukController extends Controller
     public function index()
     {
         $masuk = Anggaranmasuk::all();
-        return view('pages.anggaran.masuk.index')->with([
-            'masuk' => $masuk
-        ]);
+        return view('pages.anggaran.masuk.index', compact('masuk'));
     }
 
     /**
@@ -29,7 +28,9 @@ class AnggaranMasukController extends Controller
      */
     public function create()
     {
-        return view('pages.anggaran.masuk.create');
+        $site = SiteProyek::all();
+
+        return view('pages.anggaran.masuk.create', compact('site'));
     }
 
     /**
@@ -67,9 +68,9 @@ class AnggaranMasukController extends Controller
     public function edit($id)
     {
         $masuk =  Anggaranmasuk::findOrFail($id);
-        return view('pages.anggaran.masuk.edit')->with([
-            'masuk' => $masuk
-        ]);
+        $site = SiteProyek::all();
+
+        return view('pages.anggaran.masuk.edit', compact('masuk', 'site'));
     }
 
     /**
