@@ -27,6 +27,9 @@
           <div class="text-right">
             <a class="btn btn-primary btn-sm" title="Create" href="{{ route('site.create') }}">
               Create
+            </a> 
+            <a class="btn btn-primary btn-sm" title="Print" target="blank" href="{{ route('site.pdf') }}">
+              Print
             </a>     
           </div>
         </div>

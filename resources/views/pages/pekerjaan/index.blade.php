@@ -27,7 +27,10 @@
           <div class="text-right">
             <a class="btn btn-primary btn-sm" title="Create" href="{{ route('pekerjaan.create') }}">
               Create
-            </a>     
+            </a>  
+            <a class="btn btn-primary btn-sm" title="Print" target="blank" href="{{ route('pekerjaan.pdf') }}">
+              Print
+            </a>    
           </div>
         </div>
         <div class="card-body">

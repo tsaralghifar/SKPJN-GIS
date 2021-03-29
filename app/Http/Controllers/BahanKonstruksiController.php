@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Models\Bahankonstruksi;
 use App\Http\Requests\BahanKonstruksiRequest;
+use Barryvdh\DomPDF\Facade as PDF;
 
 class BahanKonstruksiController extends Controller
 {
@@ -20,6 +21,15 @@ class BahanKonstruksiController extends Controller
         return view('pages.bahan.index')->with([
             'bahan' => $bahan
         ]);
+    }
+
+    public function createPDF()
+    {
+        $bahan = Bahankonstruksi::all();
+        view()->share('bahan',$bahan);
+
+        $pdf = PDF::loadView('pages.bahan.print', $bahan);
+        return $pdf->stream();
     }
 
     /**

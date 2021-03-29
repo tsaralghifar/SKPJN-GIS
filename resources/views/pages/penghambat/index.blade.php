@@ -28,6 +28,9 @@
           <div class="text-right">
             <a class="btn btn-primary btn-sm" title="Create" href="{{ route('penghambat.create') }}">
               Create
+            </a>  
+            <a class="btn btn-primary btn-sm" title="Print" target="blank" href="{{ route('penghambat.pdf') }}">
+              Print
             </a>     
           </div>
         </div>

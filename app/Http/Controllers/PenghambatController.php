@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Models\Penghambat;
 use App\Http\Requests\PenghambatRequest;
+use PDF;
 
 class PenghambatController extends Controller
 {
@@ -20,6 +21,15 @@ class PenghambatController extends Controller
         return view('pages.penghambat.index')->with([
             'penghambat' => $penghambat
         ]);
+    }
+
+    public function createPDF()
+    {
+        $penghambat = Penghambat::all();
+        view()->share('penghambat',$penghambat);
+
+        $pdf = PDF::loadView('pages.penghambat.print', $penghambat);
+        return $pdf->stream();
     }
 
     /**

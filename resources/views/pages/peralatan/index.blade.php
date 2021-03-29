@@ -27,6 +27,9 @@
           <div class="text-right">
             <a class="btn btn-primary btn-sm" title="Create" href="{{ route('peralatan.create') }}">
               Create
+            </a> 
+            <a class="btn btn-primary btn-sm" title="Print" target="blank" href="{{ route('peralatan.pdf') }}">
+              Print
             </a>     
           </div>
         </div>

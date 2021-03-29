@@ -32,6 +32,7 @@ Route::middleware(['auth'])->group( function() {
   Route::delete('/personil/destroy/{id}', [App\Http\Controllers\PersonilController::class, 'destroy'])->name('personil.destroy');
   // Bahan
   Route::get('/bahan', [App\Http\Controllers\BahanKonstruksiController::class, 'index'])->name('bahan');
+  Route::get('/bahan/pdf', [App\Http\Controllers\BahanKonstruksiController::class, 'createPDF'])->name('bahan.pdf');
   Route::get('/bahan/create', [App\Http\Controllers\BahanKonstruksiController::class, 'create'])->name('bahan.create');
   Route::post('/bahan/store', [App\Http\Controllers\BahanKonstruksiController::class, 'store'])->name('bahan.store');
   Route::get('/bahan/edit/{id}', [App\Http\Controllers\BahanKonstruksiController::class, 'edit'])->name('bahan.edit');
@@ -39,6 +40,7 @@ Route::middleware(['auth'])->group( function() {
   Route::delete('/bahan/destroy/{id}', [App\Http\Controllers\BahanKonstruksiController::class, 'destroy'])->name('bahan.destroy');
   // Peralatan
   Route::get('/peralatan', [App\Http\Controllers\PeralatanController::class, 'index'])->name('peralatan');
+  Route::get('/peralatan/pdf', [App\Http\Controllers\PeralatanController::class, 'createPDF'])->name('peralatan.pdf');
   Route::get('/peralatan/create', [App\Http\Controllers\PeralatanController::class, 'create'])->name('peralatan.create');
   Route::post('/peralatan/store', [App\Http\Controllers\PeralatanController::class, 'store'])->name('peralatan.store');
   Route::get('/peralatan/edit/{id}', [App\Http\Controllers\PeralatanController::class, 'edit'])->name('peralatan.edit');
@@ -46,6 +48,7 @@ Route::middleware(['auth'])->group( function() {
   Route::delete('/peralatan/destroy/{id}', [App\Http\Controllers\PeralatanController::class, 'destroy'])->name('peralatan.destroy');
   // Penghambat
   Route::get('/penghambat', [App\Http\Controllers\PenghambatController::class, 'index'])->name('penghambat');
+  Route::get('/penghambat/pdf', [App\Http\Controllers\PenghambatController::class, 'createPDF'])->name('penghambat.pdf');
   Route::get('/penghambat/create', [App\Http\Controllers\PenghambatController::class, 'create'])->name('penghambat.create');
   Route::post('/penghambat/store', [App\Http\Controllers\PenghambatController::class, 'store'])->name('penghambat.store');
   Route::get('/penghambat/edit/{id}', [App\Http\Controllers\PenghambatController::class, 'edit'])->name('penghambat.edit');
@@ -67,6 +70,7 @@ Route::middleware(['auth'])->group( function() {
   Route::delete('/anggaran-keluar/destroy/{id}', [App\Http\Controllers\AnggaranKeluarController::class, 'destroy'])->name('anggaran-keluar.destroy');
   // Site Proyek
   Route::get('/site-proyek', [\App\Http\Controllers\SiteProyekController::class, 'index'])->name('site');
+  Route::get('/site-proyek/pdf', [App\Http\Controllers\BahanKonstruksiController::class, 'createPDF'])->name('site.pdf');
   Route::get('/site-proyek/create', [\App\Http\Controllers\SiteProyekController::class, 'create'])->name('site.create');
   Route::post('/site-proyek/store', [\App\Http\Controllers\SiteProyekController::class, 'store'])->name('site.store');
   Route::get('/site-proyek/{id}', [\App\Http\Controllers\SiteProyekController::class, 'edit'])->name('site.edit');
@@ -81,6 +85,7 @@ Route::middleware(['auth'])->group( function() {
   Route::delete('/jadwal/{id}', [\App\Http\Controllers\JadwalPengerjaanController::class, 'destroy'])->name('jadwal.destroy');
   // Form Pekerjaan
   Route::get('/pekerjaan', [\App\Http\Controllers\PekerjaanController::class, 'index'])->name('pekerjaan');
+  Route::get('/pekerjaan/pdf', [App\Http\Controllers\PekerjaanController::class, 'createPDF'])->name('pekerjaan.pdf');
   Route::get('/pekerjaan/create', [\App\Http\Controllers\PekerjaanController::class, 'create'])->name('pekerjaan.create');
   Route::post('/pekerjaan/store', [\App\Http\Controllers\PekerjaanController::class, 'store'])->name('pekerjaan.store');
   Route::get('/pekerjaan/{id}', [\App\Http\Controllers\PekerjaanController::class, 'edit'])->name('pekerjaan.edit');

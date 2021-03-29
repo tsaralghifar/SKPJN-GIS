@@ -7,6 +7,7 @@ use Illuminate\Support\Str;
 use App\Models\Peralatan;
 use App\Http\Requests\PeralatanRequest;
 use App\Models\SiteProyek;
+use Barryvdh\DomPDF\Facade as PDF;
 
 class PeralatanController extends Controller
 {
@@ -21,6 +22,15 @@ class PeralatanController extends Controller
         return view('pages.peralatan.index')->with([
             'peralatan' => $peralatan
         ]);
+    }
+
+    public function createPDF()
+    {
+        $peralatan = Peralatan::all();
+        view()->share('peralatan',$peralatan);
+
+        $pdf = PDF::loadView('pages.peralatan.print', $peralatan);
+        return $pdf->stream();
     }
 
     /**

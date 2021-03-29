@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Pekerjaan;
 use App\Http\Requests\PekerjaanRequest;
 use App\Models\SiteProyek;
+use Barryvdh\DomPDF\Facade as PDF;
 
 class PekerjaanController extends Controller
 {
@@ -20,6 +21,15 @@ class PekerjaanController extends Controller
         return view('pages.pekerjaan.index')->with([
             'pekerjaan' => $pekerjaan
         ]);
+    }
+
+    public function createPDF()
+    {
+        $pekerjaan = Pekerjaan::all();
+        view()->share('pekerjaan',$pekerjaan);
+
+        $pdf = PDF::loadView('pages.pekerjaan.print', $pekerjaan);
+        return $pdf->stream();
     }
 
     /**

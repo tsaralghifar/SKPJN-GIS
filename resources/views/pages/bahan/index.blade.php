@@ -28,7 +28,10 @@
           <div class="text-right">
             <a class="btn btn-primary btn-sm" title="Create" href="{{ route('bahan.create') }}">
               Create
-            </a>     
+            </a>  
+            <a class="btn btn-primary btn-sm" title="Print" target="blank" href="{{ route('bahan.pdf') }}">
+              Print
+            </a>    
           </div>
         </div>
         <div class="card-body">

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\SiteProyekStoreRequest;
 use App\Models\SiteProyek;
+use Barryvdh\DomPDF\Facade as PDF;
 
 class SiteProyekController extends Controller
 {
@@ -17,6 +18,15 @@ class SiteProyekController extends Controller
         $proyek = SiteProyek::all();
 
         return view('pages.site-proyek.index', compact('proyek'));
+    }
+
+    public function createPDF()
+    {
+        $proyek = SiteProyek::all();
+        view()->share('proyek',$proyek);
+
+        $pdf = PDF::loadView('pages.site-proyek.print', $proyek);
+        return $pdf->stream();
     }
 
     /**
