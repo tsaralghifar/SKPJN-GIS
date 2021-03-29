@@ -7,6 +7,7 @@ use Illuminate\Support\Str;
 use App\Models\Personil;
 use App\Models\SiteProyek;
 use App\Http\Requests\PersonilRequest;
+use Barryvdh\DomPDF\Facade as PDF;
 
 class PersonilController extends Controller
 {
@@ -21,6 +22,15 @@ class PersonilController extends Controller
         return view('pages.personil.index')->with([
             'personil' => $personil
         ]);
+    }
+
+    public function createPDF()
+    {
+        $personil = Personil::all();
+        view()->share('personil',$personil);
+
+        $pdf = PDF::loadView('pages.personil.print', $personil);
+        return $pdf->stream();
     }
 
     /**

@@ -5,11 +5,11 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-sm-6">
-				<h1 class="m-0 text-dark">Pemakaian Peralatan</h1>
+				<h1 class="m-0 text-dark">Alat & Bahan Konstruksi</h1>
 			</div><!-- /.col -->
 			<div class="col-sm-6">
 				<ol class="breadcrumb float-sm-right">
-					<li class="breadcrumb-item"><a href="#">Pemakaian Peralatan</a></li>
+					<li class="breadcrumb-item"><a href="#">Alat & Bahan Konstruksi</a></li>
 					<li class="breadcrumb-item active">List</li>
 				</ol>
 			</div><!-- /.col -->

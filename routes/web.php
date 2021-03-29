@@ -24,6 +24,7 @@ Route::middleware(['auth'])->group( function() {
 
   // Personil
   Route::get('/personil', [App\Http\Controllers\PersonilController::class, 'index'])->name('personil');
+  Route::get('/personil/pdf', [App\Http\Controllers\PersonilController::class, 'createPDF'])->name('personil.pdf');
   Route::get('/personil/create', [App\Http\Controllers\PersonilController::class, 'create'])->name('personil.create');
   Route::post('/personil/store', [App\Http\Controllers\PersonilController::class, 'store'])->name('personil.store');
   Route::get('/personil/edit/{id}', [App\Http\Controllers\PersonilController::class, 'edit'])->name('personil.edit');
