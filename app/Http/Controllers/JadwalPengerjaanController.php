@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-// use Illuminate\Support\Str;
 use App\Models\Jadwal;
 use App\Http\Requests\JadwalPengerjaanRequest;
 use App\Models\SiteProyek;
+use Barryvdh\DomPDF\Facade as PDF;
 
 class JadwalPengerjaanController extends Controller
 {
@@ -104,5 +104,14 @@ class JadwalPengerjaanController extends Controller
         $jadwal->delete();
 
         return redirect()->route('jadwal');
+    }
+
+    public function createPDF()
+    {
+        $jadwal = Jadwal::all();
+        view()->share('jadwal', $jadwal);
+
+        $pdf = PDF::loadView('pages.jadwal.print', $jadwal);
+        return $pdf->stream();
     }
 }

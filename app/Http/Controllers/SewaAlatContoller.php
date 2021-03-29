@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Models\Sewaalat;
 use App\Http\Requests\SewaAlatRequest;
+use Barryvdh\DomPDF\Facade as PDF;
 
 class SewaAlatContoller extends Controller
 {
@@ -102,5 +103,14 @@ class SewaAlatContoller extends Controller
         $sewa->delete();
 
         return redirect()->route('sewa-alat');
+    }
+
+    public function createPDF()
+    {
+        $sewa = Sewaalat::all();
+        view()->share('sewa', $sewa);
+
+        $pdf = PDF::loadView('pages.sewa-alat.print', $sewa);
+        return $pdf->stream();
     }
 }

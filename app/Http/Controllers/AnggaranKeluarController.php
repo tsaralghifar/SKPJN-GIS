@@ -7,6 +7,7 @@ use Illuminate\Support\Str;
 use App\Models\Anggarankeluar;
 use App\Http\Requests\AnggaranKeluarRequest;
 use App\Models\SiteProyek;
+use Barryvdh\DomPDF\Facade as PDF;
 
 class AnggaranKeluarController extends Controller
 {
@@ -104,5 +105,14 @@ class AnggaranKeluarController extends Controller
         $keluar->delete();
 
         return redirect()->route('anggaran-keluar');
+    }
+
+    public function createPDF()
+    {
+        $anggaran = Anggarankeluar::all();
+        view()->share('anggaran', $anggaran);
+
+        $pdf = PDF::loadView('pages.anggaran.keluar.print', $anggaran);
+        return $pdf->stream();
     }
 }

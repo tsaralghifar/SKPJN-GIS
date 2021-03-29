@@ -28,18 +28,21 @@
           <div class="text-right">
             <a class="btn btn-primary btn-sm" title="Create" href="{{ route('progress.create')}}">
               Create
-            </a>     
+            </a>
+            <a class="btn btn-primary btn-sm" target="_blank" title="Print" href="{{ route('progress.pdf')}}">
+              Print
+            </a>
           </div>
         </div>
         <div class="card-body">
           <table class="table table-bordered">
             <thead>
               <tr>
-                <th scope="col">No</th>
-                <th scope="col">Proyek</th>
-                <th scope="col">Tanggal</th>
-                <th scope="col">Kemajuan</th>
-                <th scope="col">Action</th>
+                <th>No</th>
+                <th>Proyek</th>
+                <th>Tanggal</th>
+                <th>Kemajuan</th>
+                <th>Action</th>
               </tr>
             </thead>
             <tbody>
@@ -54,8 +57,8 @@
               <tr>
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $data->progress->nama_proyek }}</td>
-                <td>{{$data->tanggal_progress}}</td>
-                <td>{{$data->kemajuan}}</td>
+                <td>{{ $data->tanggal_progress }}</td>
+                <td>{{ $data->kemajuan }}</td>
                 <td class="text-center">
                   <a href="{{ route('progress.edit', $data->id) }}" class="btn btn-primary btn-sm">
                     <i class="fa fa-edit"></i>

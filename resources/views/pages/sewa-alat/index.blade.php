@@ -28,26 +28,29 @@
           <div class="text-right">
             <a class="btn btn-primary btn-sm" title="Create" href="{{ route('sewa-alat.create') }}">
               Create
-            </a>     
+            </a>
+            <a class="btn btn-primary btn-sm" target="_blank" title="Print" href="{{ route('sewa-alat.pdf') }}">
+              Print
+            </a>
           </div>
         </div>
         <div class="card-body">
           <table class="table table-bordered">
             <thead>
               <tr>
-                <th scope="col">No</th>
-                <th scope="col">Jenis Alat</th>
-                <th scope="col">Tanggal Sewa</th>
-                <th scope="col">Keperluan</th>
-                <th scope="col">Biaya Sewa</th>
-                <th scope="col">Action</th>
+                <th>No</th>
+                <th>Jenis Alat</th>
+                <th>Tanggal Sewa</th>
+                <th>Keperluan</th>
+                <th>Biaya Sewa</th>
+                <th>Action</th>
               </tr>
             </thead>
             <tbody>
 
               @if($sewa->count() <= 0)
               <tr>
-                <td colspan="5" class="text-center">There is no data</td>
+                <td colspan="6" class="text-center">There is no data</td>
               </tr>
               @endif
 
@@ -57,7 +60,7 @@
                 <td>{{$data->jenis_alat}}</td>
                 <td>{{$data->tanggal_sewa}}</td>
                 <td>{{$data->keperluan}}</td>
-                <td>{{$data->biaya_sewa}}</td>
+                <td>@rupiah($data->biaya_sewa)</td>
                 <td class="text-center">
                   <a href="{{ route('sewa-alat.edit', $data->id) }}" class="btn btn-primary btn-sm">
                     <i class="fa fa-edit"></i>
