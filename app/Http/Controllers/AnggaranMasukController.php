@@ -7,6 +7,7 @@ use Illuminate\Support\Str;
 use App\Models\Anggaranmasuk;
 use App\Http\Requests\AnggaranMasukRequest;
 use App\Models\SiteProyek;
+use Barryvdh\DomPDF\Facade as PDF;
 
 class AnggaranMasukController extends Controller
 {
@@ -103,5 +104,14 @@ class AnggaranMasukController extends Controller
         $masuk->delete();
 
         return redirect()->route('anggaran-masuk');
+    }
+
+    public function createPDF()
+    {
+        $anggaran = Anggaranmasuk::all();
+        view()->share('anggaran', $anggaran);
+
+        $pdf = PDF::loadView('pages.anggaran.masuk.print', $anggaran);
+        return $pdf->stream();
     }
 }

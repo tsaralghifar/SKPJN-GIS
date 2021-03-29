@@ -28,7 +28,10 @@
           <div class="text-right">
             <a class="btn btn-primary btn-sm" title="Create" href="{{ route('jadwal.create')}}">
               Create
-            </a>     
+            </a>
+            <a class="btn btn-primary btn-sm" target="_blank" title="Print" href="{{ route('jadwal.pdf') }}">
+              Print
+            </a>
           </div>
         </div>
         <div class="card-body">
@@ -54,8 +57,8 @@
               <tr>
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $data->proyek->nama_proyek }}</td>
-                <td>{{$data->jadwal_pengerjaan}}</td>
-                <td>{{$data->jadwal_estimasi}}</td>
+                <td>{{ $data->jadwal_pengerjaan }}</td>
+                <td>{{ $data->jadwal_estimasi }}</td>
                 <td class="text-center">
                   <a href="{{ route('jadwal.edit', $data->id) }}" class="btn btn-primary btn-sm">
                     <i class="fa fa-edit"></i>

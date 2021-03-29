@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Progress;
 use App\Http\Requests\ProgressProyekRequest;
 use App\Models\SiteProyek;
+use Barryvdh\DomPDF\Facade as PDF;
 
 class ProgressProyekController extends Controller
 {
@@ -101,5 +102,14 @@ class ProgressProyekController extends Controller
         $progress->delete();
 
         return redirect()->route('progress');
+    }
+    
+    public function createPDF()
+    {
+        $progres = Progress::all();
+        view()->share('progres', $progres);
+
+        $pdf = PDF::loadView('pages.progress.print', $progres);
+        return $pdf->stream();
     }
 }

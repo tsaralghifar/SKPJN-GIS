@@ -13,10 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
 Auth::routes();
 
 Route::middleware(['auth'])->group( function() {
@@ -56,6 +52,7 @@ Route::middleware(['auth'])->group( function() {
   Route::delete('/penghambat/destroy/{id}', [App\Http\Controllers\PenghambatController::class, 'destroy'])->name('penghambat.destroy');
   // Anggaran Masuk
   Route::get('/anggaran-masuk', [App\Http\Controllers\AnggaranMasukController::class, 'index'])->name('anggaran-masuk');
+  Route::get('/anggaran-masuk/pdf', [App\Http\Controllers\AnggaranMasukController::class, 'createPDF'])->name('anggaran-masuk.pdf');
   Route::get('/anggaran-masuk/create', [App\Http\Controllers\AnggaranMasukController::class, 'create'])->name('anggaran-masuk.create');
   Route::post('/anggaran-masuk/store', [App\Http\Controllers\AnggaranMasukController::class, 'store'])->name('anggaran-masuk.store');
   Route::get('/anggaran-masuk/edit/{id}', [App\Http\Controllers\AnggaranMasukController::class, 'edit'])->name('anggaran-masuk.edit');
@@ -63,6 +60,7 @@ Route::middleware(['auth'])->group( function() {
   Route::delete('/anggaran-masuk/destroy/{id}', [App\Http\Controllers\AnggaranMasukController::class, 'destroy'])->name('anggaran-masuk.destroy');
   // Anggaran Keluar
   Route::get('/anggaran-keluar', [App\Http\Controllers\AnggaranKeluarController::class, 'index'])->name('anggaran-keluar');
+  Route::get('/anggaran-keluar/pdf', [App\Http\Controllers\AnggaranKeluarController::class, 'createPDF'])->name('anggaran-keluar.pdf');
   Route::get('/anggaran-keluar/create', [App\Http\Controllers\AnggaranKeluarController::class, 'create'])->name('anggaran-keluar.create');
   Route::post('/anggaran-keluar/store', [App\Http\Controllers\AnggaranKeluarController::class, 'store'])->name('anggaran-keluar.store');
   Route::get('/anggaran-keluar/edit/{id}', [App\Http\Controllers\AnggaranKeluarController::class, 'edit'])->name('anggaran-keluar.edit');
@@ -78,6 +76,7 @@ Route::middleware(['auth'])->group( function() {
   Route::delete('/site-proyek/{id}', [\App\Http\Controllers\SiteProyekController::class, 'destroy'])->name('site.destroy');
   // Jadwal Pengerjaan
   Route::get('/jadwal', [\App\Http\Controllers\JadwalPengerjaanController::class, 'index'])->name('jadwal');
+  Route::get('/jadwal/pdf', [\App\Http\Controllers\JadwalPengerjaanController::class, 'createPDF'])->name('jadwal.pdf');
   Route::get('/jadwal/create', [\App\Http\Controllers\JadwalPengerjaanController::class, 'create'])->name('jadwal.create');
   Route::post('/jadwal/store', [\App\Http\Controllers\JadwalPengerjaanController::class, 'store'])->name('jadwal.store');
   Route::get('/jadwal/{id}', [\App\Http\Controllers\JadwalPengerjaanController::class, 'edit'])->name('jadwal.edit');
@@ -93,6 +92,7 @@ Route::middleware(['auth'])->group( function() {
   Route::delete('/pekerjaan/{id}', [\App\Http\Controllers\PekerjaanController::class, 'destroy'])->name('pekerjaan.destroy');
   // Sewa Alat
   Route::get('/sewa-alat', [\App\Http\Controllers\SewaAlatContoller::class, 'index'])->name('sewa-alat');
+  Route::get('/sewa-alat/pdf', [\App\Http\Controllers\SewaAlatContoller::class, 'createPDF'])->name('sewa-alat.pdf');
   Route::get('/sewa-alat/create', [\App\Http\Controllers\SewaAlatContoller::class, 'create'])->name('sewa-alat.create');
   Route::post('/sewa-alat/store', [\App\Http\Controllers\SewaAlatContoller::class, 'store'])->name('sewa-alat.store');
   Route::get('/sewa-alat/{id}', [\App\Http\Controllers\SewaAlatContoller::class, 'edit'])->name('sewa-alat.edit');
@@ -100,6 +100,7 @@ Route::middleware(['auth'])->group( function() {
   Route::delete('/sewa-alat/{id}', [\App\Http\Controllers\SewaAlatContoller::class, 'destroy'])->name('sewa-alat.destroy');
   // Progress
   Route::get('/progress', [\App\Http\Controllers\ProgressProyekController::class, 'index'])->name('progress');
+  Route::get('/progress/pdf', [\App\Http\Controllers\ProgressProyekController::class, 'createPDF'])->name('progress.pdf');
   Route::get('/progress/create', [\App\Http\Controllers\ProgressProyekController::class, 'create'])->name('progress.create');
   Route::post('/progress/store', [\App\Http\Controllers\ProgressProyekController::class, 'store'])->name('progress.store');
   Route::get('/progress/{id}', [\App\Http\Controllers\ProgressProyekController::class, 'edit'])->name('progress.edit');
