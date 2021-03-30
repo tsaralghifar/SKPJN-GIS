@@ -713,8 +713,7 @@ td.change_order_unit_col {
 </tr>
 
 <tr>
-<td><strong>Kopi M'Baroh</strong></td>
-<td>Alamat: <strong>JL. Sukamara, Landasan Ulin</strong></td>
+  <td><strong>SKPJN - Alat & Bahan Konstruksi</strong></td>
 </tr>
 </table>
 

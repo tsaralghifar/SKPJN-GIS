@@ -158,12 +158,12 @@ to get the desired effect
                     <p>Anggaran Keluar</p>
                   </a>
                 </li>
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                   <a href="#" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Biaya Personel</p>
                   </a>
-                </li>
+                </li> --}}
               </ul>
             </li>
             <li class="nav-item">
