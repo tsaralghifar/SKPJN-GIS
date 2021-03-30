@@ -68,7 +68,7 @@ Route::middleware(['auth'])->group( function() {
   Route::delete('/anggaran-keluar/destroy/{id}', [App\Http\Controllers\AnggaranKeluarController::class, 'destroy'])->name('anggaran-keluar.destroy');
   // Site Proyek
   Route::get('/site-proyek', [\App\Http\Controllers\SiteProyekController::class, 'index'])->name('site');
-  Route::get('/site-proyek/pdf', [App\Http\Controllers\BahanKonstruksiController::class, 'createPDF'])->name('site.pdf');
+  Route::get('/site-proyek/pdf', [App\Http\Controllers\SiteProyekController::class, 'createPDF'])->name('site.pdf');
   Route::get('/site-proyek/create', [\App\Http\Controllers\SiteProyekController::class, 'create'])->name('site.create');
   Route::post('/site-proyek/store', [\App\Http\Controllers\SiteProyekController::class, 'store'])->name('site.store');
   Route::get('/site-proyek/{id}', [\App\Http\Controllers\SiteProyekController::class, 'edit'])->name('site.edit');
